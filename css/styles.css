@@ -345,6 +345,7 @@ main:focus { outline: none; }
   content: "Placeholder"; display: block; margin-bottom: 0.2rem; font-style: normal;
   font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-oak-deep);
 }
+.family-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(2, 1fr); }
 .story-band { background: var(--c-parchment-2); }
 .cta-band { background: var(--tex-iron), var(--c-ink); color: var(--c-on-dark); text-align: center; }
 .cta-band h2 { color: var(--c-parchment); }
@@ -461,6 +462,9 @@ main:focus { outline: none; }
 }
 
 /* 16. Page-specific additions ------------------------------------------- */
+.family { margin-top: var(--space-7); }
+.family-title { margin-bottom: var(--space-2); }
+.family .prompt { max-width: 46rem; margin-bottom: var(--space-4); }
 .story-band .value h3 { margin-top: 0; }
 .lightbox-count { align-self: center; font-size: 0.85rem; margin-right: auto; margin-left: var(--space-2); }
 .lightbox-controls { flex-wrap: wrap; }
@@ -471,6 +475,19 @@ main:focus { outline: none; }
   box-shadow: inset 0 0 0 1px rgb(43 42 40 / 0.08);
 }
 .ratio-reel .gallery-video { aspect-ratio: 9 / 16; }
+
+/* 17. Family photos (about) -------------------------------------------- */
+.ratio-tall img { aspect-ratio: 3 / 4; object-fit: cover; }
+.family-grid { grid-template-columns: 1fr 1fr; align-items: start; }
+.ratio-wide img { aspect-ratio: 3 / 2; object-fit: cover; }
+.family-wide { grid-column: 1 / -1; }
+.family-featured { grid-column: auto; } /* mobile: two portraits side by side, landscape full width below */
+.photo-credit { display: block; font-size: 0.78rem; color: var(--c-iron); }
+@media (min-width: 720px) {
+  /* Two 3:4 portraits + one 3:2 landscape. At 1fr : 1fr : 2fr all three photos are the same height */
+  .family-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr); gap: var(--space-4); max-width: 1200px; }
+  .family-featured, .family-snow, .family-wide { grid-column: auto; grid-row: auto; }
+}
 
 /* 18. Video items */
 .video-item { position: relative; }

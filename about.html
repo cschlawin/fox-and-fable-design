@@ -35,9 +35,9 @@
 
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=15">
+  <link rel="stylesheet" href="css/styles.css?v=16">
   <!-- Loaded (not deferred) so it can swap .no-js → .js before first paint; DOM work waits for DOMContentLoaded. -->
-  <script src="js/main.js?v=15"></script>
+  <script src="js/main.js?v=16"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -111,6 +111,34 @@
           </div>
         </article>
 
+        <!-- Family photos -->
+        <section class="family" aria-labelledby="family-title">
+          <h2 id="family-title" class="family-title">Our family</h2>
+          <p class="prompt">[A sentence or two about the family and what home means to you.]</p>
+          <div class="family-grid">
+            <figure class="photo ratio-tall family-featured">
+              <picture>
+                <source srcset="assets/images/about/family.webp" type="image/webp">
+                <img src="assets/images/about/family.jpg" width="557" height="743" loading="lazy" decoding="async" alt="The Schlawin family — Cody, Jessica, and their three children — in the mountains in winter">
+              </picture>
+              <figcaption>[Optional caption, e.g. where and when this was taken]</figcaption>
+            </figure>
+            <figure class="photo ratio-tall family-snow">
+              <picture>
+                <source srcset="assets/images/about/family-snow.webp" type="image/webp">
+                <img src="assets/images/about/family-snow.jpg" width="900" height="1105" loading="lazy" decoding="async" alt="The Schlawin family — Cody, Jessica, and their three children — laughing in falling snow">
+              </picture>
+              <figcaption>[Optional caption]</figcaption>
+            </figure>
+            <figure class="photo ratio-wide family-wide">
+              <picture>
+                <source srcset="assets/images/about/family-summer.webp" type="image/webp">
+                <img src="assets/images/about/family-summer.jpg" width="1200" height="800" loading="lazy" decoding="async" alt="The Schlawin family — Cody, Jessica, and their three children — on a mountain meadow in summer">
+              </picture>
+              <figcaption>[Optional caption] <span class="photo-credit">Photo: Christine Mathews Photography</span></figcaption>
+            </figure>
+          </div>
+        </section>
       </div>
     </section>
 

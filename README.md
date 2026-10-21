@@ -15,7 +15,7 @@ materials, layering, and how a room feels. *Warm. Layered. Unmistakably yours.*
 | Page | What's on it |
 |---|---|
 | `index.html` | Interior design studio home page: hero (finished primary bedroom), intro, services (full-service design, refreshes & styling, consultations, cabinetry & accent wall design), four featured portfolio rooms, design approach, four-step process (Consult, Concept, Design & sourcing, Install & style), inquiry form (preview only) |
-| `about.html` | Jessica's designer section (real photo and intro bio; role line is a placeholder), design approach values, inquiry CTA |
+| `about.html` | Jessica's designer section (real photo and intro bio; role line is a placeholder), three family photos (winter and snow portraits plus a summer landscape), design approach values, inquiry CTA |
 | `gallery.html` | Finished-room portfolio: three self-hosted finished-room videos (color-drenched pantry walkthrough, pale blue walk-in closet reveal, his & hers closet) and fifteen photo projects. Sets show finished photos, "Design" renderings where they exist, and "Before" photos. Category filters (All / Closets & Storage / Bedrooms / Living Spaces / Offices & Flex Rooms / Laundry Rooms / Pantries / Playrooms) and an accessible `<dialog>` lightbox |
 
 ## Features
@@ -55,7 +55,7 @@ site/
 │   ├── video/                # Self-hosted MP4 (H.264/AAC) + WebM (VP9/Opus) pairs, metadata stripped
 │   └── images/
 │       ├── placeholders/     # landscape / portrait / square placeholder art
-│       ├── about/            # Jessica's portrait (jessica.webp / .jpg)
+│       ├── about/            # Jessica's portrait (jessica.*) and family photos (family.*, family-snow.*, family-summer.*)
 │       ├── home/             # Home page crops of finished gallery photos
 │       └── gallery/          # video posters + project photos
 ├── tools/build-logo-assets.py # Rebuilds every logo/icon asset from the original (needs: pip install pillow numpy scipy)
