@@ -1,0 +1,33 @@
+# --- Secrets: never commit these ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+secrets.*
+credentials*.json
+
+# --- OS files ---
+.DS_Store
+._*
+Thumbs.db
+desktop.ini
+
+# --- Editors ---
+.vscode/
+.idea/
+*.swp
+*~
+
+# --- Dependencies & tooling ---
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.cache/
+
+# --- Build output ---
+dist/
+build/
