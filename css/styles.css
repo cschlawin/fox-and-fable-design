@@ -665,3 +665,78 @@ main:focus { outline: none; }
 .gallery-link picture { display: block; }
 .photo img { display: block; height: auto; max-width: 100%; object-fit: cover; object-position: 50% 50%; }
 .lightbox img { height: auto; object-fit: contain; }
+
+/* 19. Home page: interior design studio --------------------------------- */
+.nowrap { white-space: nowrap; }
+.home-hero { padding-block: var(--space-5) var(--space-7); }
+.home-hero-grid { display: grid; gap: var(--space-5); align-items: center; }
+.home-hero-media { order: -1; margin: 0; }
+.home-hero-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-sm); }
+.home-hero-media figcaption { margin-top: var(--space-2); font-size: 0.8rem; letter-spacing: 0.04em; color: var(--c-iron); }
+.home-hero-copy h1 { font-weight: 500; }
+.home-hero-copy h1 em { font-style: italic; font-weight: 500; color: var(--c-oak-deep); }
+.home-hero-tagline { margin-top: var(--space-3); font-family: var(--font-serif); font-size: var(--fs-600); font-style: italic; color: var(--c-ink); line-height: 1.25; }
+.home-hero-lede { margin-top: var(--space-4); max-width: 34rem; font-size: var(--fs-500); color: var(--c-iron); }
+.home-place-loc { display: inline-block; }
+.home-hero-place { margin-top: var(--space-5); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-iron); }
+
+.home-intro { background: var(--c-paper); text-align: center; }
+.home-intro-inner { max-width: 48rem; }
+.home-intro .eyebrow { justify-content: center; }
+.home-intro .eyebrow::before { display: none; }
+.home-intro h2 { font-weight: 500; }
+.home-intro p:not(.eyebrow) { margin-top: var(--space-4); font-size: var(--fs-500); color: var(--c-iron); }
+
+.home-service-grid { display: grid; gap: var(--space-5); }
+.home-service { padding-top: var(--space-4); border-top: 1px solid rgb(43 42 40 / 0.22); }
+.home-service h3 { font-weight: 500; }
+.home-service p { margin-top: var(--space-2); color: var(--c-iron); }
+.home-service .home-service-note { margin-top: var(--space-3); font-family: var(--font-serif); font-style: italic; font-size: 1.15rem; color: var(--c-oak-deep); }
+
+.home-portfolio { background: var(--c-parchment-2); }
+.home-head-row { max-width: none; display: grid; gap: var(--space-3); }
+.home-head-row h2 { font-weight: 500; }
+.home-card-grid { display: grid; gap: var(--space-5) var(--space-4); }
+.home-card-link { display: block; text-decoration: none; color: var(--c-ink); border-radius: var(--radius-sm); }
+.home-card-link picture { display: block; overflow: hidden; border-radius: var(--radius-sm); }
+.home-card-link img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform .6s var(--ease); }
+.home-card-link:hover img { transform: scale(1.03); }
+.home-card-cat { display: block; margin-top: var(--space-3); font-size: 0.72rem; font-weight: 600; letter-spacing: var(--track-caps); text-transform: uppercase; color: var(--c-oak-deep); }
+.home-card-title { display: block; margin-top: 0.2rem; font-family: var(--font-serif); font-size: 1.35rem; line-height: 1.2; }
+.home-card-link:hover .home-card-title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+
+.home-studio-grid { display: grid; gap: var(--space-6); align-items: center; }
+.home-studio-media { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); align-items: end; }
+.home-studio-media figure { margin: 0; }
+.home-studio-media figure:first-child { margin-bottom: var(--space-6); }
+.home-studio-media img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius-sm); }
+.home-studio-media figcaption { margin-top: var(--space-2); font-size: 0.8rem; color: var(--c-iron); }
+.home-studio-copy h2 { font-weight: 500; }
+.home-studio-copy p:not(.eyebrow) { margin-top: var(--space-4); font-size: var(--fs-500); color: var(--c-iron); }
+.home-studio-copy .text-link { margin-top: var(--space-5); }
+
+.home-process { background: var(--c-paper); }
+.home-process h2 { font-weight: 500; }
+.home-steps { display: grid; gap: var(--space-5); }
+.home-step { padding-top: var(--space-4); border-top: 1px solid rgb(43 42 40 / 0.22); }
+.home-step-num { display: block; font-family: var(--font-serif); font-size: 1.1rem; color: var(--c-oak-deep); margin-bottom: var(--space-2); }
+.home-step h3 { font-weight: 500; }
+.home-step p { margin-top: var(--space-2); color: var(--c-iron); }
+
+@media (min-width: 720px) {
+  .home-service-grid, .home-steps { grid-template-columns: repeat(2, 1fr); gap: var(--space-6) var(--space-5); }
+  .home-card-grid { grid-template-columns: repeat(2, 1fr); }
+  .home-head-row { grid-template-columns: 1fr auto; align-items: end; }
+}
+@media (min-width: 1100px) {
+  .home-hero { padding-block: var(--space-6) var(--space-7); }
+  .home-hero-grid { grid-template-columns: 5fr 7fr; gap: var(--space-7); }
+  .home-hero-media { order: 0; }
+  .home-service-grid { gap: var(--space-6) var(--space-7); max-width: 60rem; }
+  .home-steps { grid-template-columns: repeat(4, 1fr); gap: var(--space-5); }
+  .home-card-grid { grid-template-columns: repeat(4, 1fr); }
+  .home-studio-grid { grid-template-columns: 1.1fr 1fr; gap: var(--space-7); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-card-link:hover img { transform: none; }
+}

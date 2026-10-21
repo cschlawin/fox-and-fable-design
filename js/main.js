@@ -75,7 +75,7 @@
     city:     { required: "Which city is the project in?", max: 60 },
     room:     { required: "Please choose a room type." },
     project:  { required: "Please choose a project type." },
-    budget:   { required: "Please choose a budget range." },
+    scope:    { required: "Please choose a project scope." },
     timeline: { required: "Please choose a timeline." },
     message:  { max: 2000, multiline: true }
   };
