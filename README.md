@@ -1,25 +1,22 @@
 # Fox & Fable · Website (Interior Design Version)
 
 > This repository is a copy of the Fox & Fable site, the starting point for an interior-design-focused version.
-> It is a separate mock-up; the original playhouse site lives in `cschlawin/fox-and-fable`.
+> It is a separate mock-up; the original site lives in `cschlawin/fox-and-fable`.
 
-A hand-coded, responsive three-page site for **Fox & Fable, LLC**, a concept-stage design-build studio in
-the Greater Salt Lake Area, Utah, that makes bespoke, heirloom-quality indoor playhouses and bunk rooms.
-**Fox & Fable Design + Construction.** *Playful Spaces. Timeless Memories.*
+A hand-coded, responsive three-page site for **Fox & Fable, LLC**, Jessica's interior design studio in the
+Greater Salt Lake Area, Utah. The site uses finished-room photography to showcase her design work: palette,
+materials, layering, and how a room feels. *Warm. Layered. Unmistakably yours.*
 
-> **Status:** design mockup / portfolio project. Apart from the family photos and finished project media, all imagery is placeholder art.
-> Bios are fill-in prompts, the contact email is a placeholder, and the consultation form validates in the
-> browser but does not send anything.
-
-![Desktop hero screenshot](docs/desktop-hero.webp)
+> **Status:** design mockup / portfolio project. Jessica's role line and some about-page prompts are placeholders,
+> the contact email is a placeholder, and the inquiry form validates in the browser but does not send anything.
 
 ## Pages
 
 | Page | What's on it |
 |---|---|
-| `index.html` | Hero with the bronze-sign rendering of the logo, Featured Worlds, Story-First Process, values, designer Trade Program, commercial spaces, Behind-the-Build (painting time-lapse and workshop joinery videos), gallery teaser (Color Drench pantry, daughter's closet, his & her closets), consultation form |
-| `about.html` | "Our Story": Jessica's founder section (placeholder bio and portrait), three family photos (winter and snow portraits plus a summer landscape), brand story and values, consultation CTA |
-| `gallery.html` | Thirteen slots in a row-ordered grid, **finished projects only**: three self-hosted videos (the Color Drench pantry, the daughter's custom closet, his & her closets with a "See the before" button), six photo-set projects (a built-in playhouse with a before photo, a 2-story indoor cottage playhouse in Mooresville, NC with an in-progress build photo, a stone-wall primary bedroom, a great room with a stone fireplace, four finished photos and a before photo, a custom home office and gym with a Murphy bed and an in-progress build photo (six photos), and a laundry room with a built-in dog kennel in Mooresville, NC with a before photo), then four photo placeholders. Category filters (All / Playhouses / Bunk Rooms / Closets & Built-ins / Bedrooms / Living Spaces / Offices & Flex Rooms / Laundry Rooms / Commercial) and an accessible `<dialog>` lightbox for photos |
+| `index.html` | Interior design studio home page: hero (finished primary bedroom), intro, services (full-service design, refreshes & styling, consultations, cabinetry & accent wall design), four featured portfolio rooms, design approach, four-step process (Consult, Concept, Design & sourcing, Install & style), inquiry form (preview only) |
+| `about.html` | Jessica's designer section (real photo and intro bio; role line is a placeholder), design approach values, inquiry CTA |
+| `gallery.html` | Finished-room portfolio: three self-hosted finished-room videos (color-drenched pantry walkthrough, pale blue walk-in closet reveal, his & hers closet) and fifteen photo projects. Sets show finished photos, "Design" renderings where they exist, and "Before" photos. Category filters (All / Closets & Storage / Bedrooms / Living Spaces / Offices & Flex Rooms / Laundry Rooms / Pantries / Playrooms) and an accessible `<dialog>` lightbox |
 
 ## Features
 
@@ -28,10 +25,12 @@ the Greater Salt Lake Area, Utah, that makes bespoke, heirloom-quality indoor pl
   builds the web assets into `assets/logo/`: the full lockup (WebP + PNG, 520/1040 `srcset`, on the
   artwork's own paper with a matching `#F0ECE5` card), the FF + fox monogram for the nav (1x/2x/3x, keyed to
   transparency) beside the live-text wordmark, the horizontal light lockup from the brand sheet for the charcoal footer
-  (keyed off its olive panel so there's no box edge), a "burned" monogram for the oak brand stamp, plus the favicon
+  (keyed off its olive panel so there's no box edge), plus the favicon
   set (`favicon.ico`, `favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`) and the 1200×630
   Open Graph image. The engraved artwork stays raster; it would not survive a vector trace. Earlier logos are kept as
-  `docs/brand-reference/previous-*`.
+  `docs/brand-reference/previous-*`. In this interior design version, the footer lockup (`horizontal-light-*`) and
+  `og-image.png` were edited by hand to drop the logo's "Design + Construction" descriptor line; re-running the
+  logo script restores that line, so re-apply the edit afterwards.
 - **Shared header and footer** on every page, with `aria-current="page"` on the active link.
 - **Mobile navigation** with an accessible toggle (`aria-expanded`; it closes on link click, on Escape, and on resize).
 - **Client-side form validation** with friendly inline messages, a live character counter, and a success state.
@@ -47,19 +46,20 @@ Plain **HTML5, CSS3, and vanilla JavaScript**. No frameworks, build step, or run
 ```
 site/
 ├── index.html, about.html, gallery.html
-├── css/styles.css            # Mobile-first stylesheet built on design tokens
+├── css/styles.css            # Mobile-first stylesheet based on design tokens
 ├── js/main.js                # Nav, form validation, gallery filters + lightbox
 ├── assets/
-│   ├── logo/                 # Generated logo assets (full lockup, footer horizontal lockup, nav monogram, burned monogram), WebP + PNG
+│   ├── logo/                 # Generated logo assets (full lockup, footer horizontal lockup, nav monogram), WebP + PNG
 │   ├── favicon.ico, favicon-32.png, apple-touch-icon.png, icon-192.png, icon-512.png, og-image.png
 │   ├── fonts/                # Self-hosted Cormorant Garamond + Inter (woff2) + OFL licenses
 │   ├── video/                # Self-hosted MP4 (H.264/AAC) + WebM (VP9/Opus) pairs, metadata stripped
 │   └── images/
 │       ├── placeholders/     # landscape / portrait / square placeholder art
-│       ├── about/            # family.*, family-snow.*, family-summer.* (Jessica's portrait goes here)
+│       ├── about/            # Jessica's portrait (jessica.webp / .jpg)
+│       ├── home/             # Home page crops of finished gallery photos
 │       └── gallery/          # video posters + project photos
 ├── tools/build-logo-assets.py # Rebuilds every logo/icon asset from the original (needs: pip install pillow numpy scipy)
-├── docs/                     # README screenshot; brand-reference/ holds the logo artwork and brand sheet (plus previous logos)
+├── docs/                     # brand-reference/ holds the logo artwork and brand sheet (plus previous logos)
 ├── _headers, robots.txt, sitemap.xml, site.webmanifest
 └── README.md, SECURITY.md, LICENSE
 ```
@@ -87,7 +87,7 @@ site/
 - **Typography.** *Cormorant Garamond* for headings and the spaced-caps wordmark (close to the logo's serif wordmark, with the `&` picked out in the accent color) and
   *Inter* for body text and the spaced-caps eyebrows (an echo of the logo's spaced-caps tagline). Each eyebrow gets a short rule
   like the one under the logo's descriptor.
-- **Logo showcase and "branded" motif.** The hero shows a rendering of the logo as a bronze sign on a limestone wall (`assets/images/hero/brand-sign-*`, uncaptioned); the values section keeps the oak-board stamp, now with the fox "burned" in.
+- **Editorial, image-first layout.** Large finished-room photography, generous white space, serif headings, and short copy about how a room feels.
 - **Honest content.** There are no invented testimonials, stats, awards, projects, or bios. Every slot is labeled as a placeholder.
 
 ## Accessibility notes
@@ -115,7 +115,7 @@ npx html-validate index.html about.html gallery.html   # optional HTML check
 ### Privacy first: strip metadata
 
 Phone photos carry **EXIF metadata, including GPS coordinates of where they were taken** (often your home).
-This repository is public, so strip metadata from every photo, especially family photos, before committing:
+This repository is public, so strip metadata from every photo, especially photos of people, before committing:
 
 ```bash
 exiftool -all= -overwrite_original photo.jpg          # https://exiftool.org
@@ -133,18 +133,10 @@ Double-check with `exiftool photo.jpg` (it should show no GPS, camera, or date f
 
 Then, in `about.html`:
 
-1. Change the `<img src>` from `assets/images/placeholders/…svg` to the new file. Use `<picture>` with a WebP
-   `<source>` and a JPEG fallback, following the family photo markup.
+1. Use `<picture>` with a WebP `<source>` and a JPEG fallback.
 2. Update `width`/`height` to the real pixel size. This prevents layout shift.
-3. Replace the `alt` with a real description, e.g. `alt="Jessica in the Fox & Fable workshop"`.
-4. Delete the `<span class="ph-label">…</span>` line, and replace the `[bracketed]` prompt text and role.
-
-The featured family photo
-(`assets/images/about/family.webp` / `.jpg`, 557 × 743, 3:4) has light touch-ups only (gentle levels, slight
-warmth, light sharpening) and are sRGB. The summer photo (`family-summer.webp` / `.jpg`, 1200 × 800, 3:2) got only a
-very gentle levels pass and light sharpening; it's meant to look bright and backlit. It sits beside the winter portrait
-in a 1fr : 2fr grid so both photos are the same height. It's credited to the photographer in its caption, because
-the original carried a copyright notice that was removed with the rest of the metadata. All metadata was stripped. The family photo's alt text doesn't include the children's names. Keep it that way.
+3. Write a real description in `alt`, e.g. `alt="Jessica in a finished living room"`.
+4. Replace the `[bracketed]` role placeholder.
 
 ### Adding gallery photos (`gallery.html`)
 
@@ -153,25 +145,25 @@ the original carried a copyright notice that was removed with the rest of the me
 2. Copy one `<figure class="gallery-item">` block in `gallery.html` and edit it:
 
    ```html
-   <figure class="gallery-item photo ratio-landscape" data-category="playhouses">
-     <a class="gallery-link" href="assets/images/gallery/alchemists-attic-farmington.webp">
-       <img src="assets/images/gallery/alchemists-attic-farmington.webp" width="1600" height="1200"
+   <figure class="gallery-item photo ratio-landscape" data-category="living-spaces">
+     <a class="gallery-link" href="assets/images/gallery/project-slug.webp">
+       <img src="assets/images/gallery/project-slug.webp" width="1600" height="1200"
             loading="lazy" decoding="async"
-            alt="Peaked attic playhouse with a round window and copper details in a bright playroom">
+            alt="Describe the finished room: palette, materials, lighting and key pieces">
      </a>
-     <figcaption><span class="gallery-cat">Playhouse</span> <span class="gallery-meta">The Alchemist's Attic · Storybook loft · Farmington, UT</span></figcaption>
+     <figcaption><span class="gallery-cat">Living Spaces</span> <span class="gallery-meta">Living room · [Design summary] · [City, ST]</span></figcaption>
    </figure>
    ```
 
-   - `data-category` is one or more of `playhouses`, `bunk-rooms`, `closets`, `bedrooms`, `living-spaces`, `offices`, `laundry`, `commercial`, separated by spaces. These drive the filter buttons.
+   - `data-category` is one or more of `closets`, `bedrooms`, `living-spaces`, `offices`, `laundry`, `pantries`, `playrooms`, separated by spaces. These drive the filter buttons. Add a filter button only when a project uses it.
    - `ratio-landscape` (4:3), `ratio-portrait` (4:5), `ratio-square` (1:1), or `ratio-reel` (9:16, for vertical phone video) sets the frame shape.
    - The link `href` is what the lightbox shows. Keep it a local file (the lightbox only accepts same-origin URLs).
    - Write descriptive `alt` text: what's in the room, not "photo of project".
-   - Remove the `ph-label` span, and delete placeholder blocks as real projects replace them.
+   - The gallery shows finished rooms. Captions describe design choices (palette, materials, mood) in the format `Room · Design summary · Location`.
 3. Ask clients for permission before publishing photos of their home, and never include names or street addresses.
 
 **Multi-photo projects.** To give a project extra photos, add a hidden set after its cover link. The lightbox cycles
-through the set with ← / → and shows "2 / 3". Add `data-label="Before"` to a slide and the indicator reads "3 / 3 · Before" (any label works, e.g. `data-label="In progress"`):
+through the set with ← / → and shows "2 / 3". Add `data-label="Before"` to a slide and the indicator reads "3 / 3 · Before" (any label works, e.g. `data-label="Design"` for a rendering):
 
 ```html
 <div class="gallery-set" hidden>
@@ -208,13 +200,13 @@ ffmpeg -ss 4.8 -i project.mp4 -frames:v 1 -map_metadata -1 project-poster.jpg
 ffprobe -v error -show_entries format_tags:stream_tags -of compact project.mp4 | grep -iE 'location|ISO6709|make|model|creation'
 ```
 
-**2. Add the markup** (copy the Color Drench pantry item in `gallery.html`):
+**2. Add the markup** (copy the pantry walkthrough item in `gallery.html`):
 
 ```html
 <figure class="gallery-item photo ratio-reel video-item" data-category="closets">
   <video class="gallery-video" controls preload="none" playsinline width="608" height="1080"
          poster="assets/images/gallery/project-poster.webp"
-         aria-label="Video: [Theme] [project] built by Fox &amp; Fable">
+         aria-label="Video: [room] [design summary], designed by Fox &amp; Fable">
     <source src="assets/video/project.webm" type="video/webm">
     <source src="assets/video/project.mp4" type="video/mp4">
     <track kind="captions" src="assets/video/project.en.vtt" srclang="en" label="English">
@@ -234,20 +226,15 @@ ffprobe -v error -show_entries format_tags:stream_tags -of compact project.mp4 |
   ```
   The pantry video has no captions file yet. The exact `<track>` line for it is in the HTML comment above its item in `gallery.html`.
 
-The gallery shows **finished projects only**. Process and behind-the-scenes footage goes in the homepage Behind-the-Build strip (`<li class="build-video">`).
+The gallery shows **finished rooms only** (videos should be finished-room walkthroughs or reveals).
 
 **Current videos** (all 608 × 1080 portrait, `controls preload="none" playsinline`, no autoplay):
 
 | File (`assets/video/`) | Where | Notes |
 |---|---|---|
-| `painting-timelapse` | Homepage Behind-the-Build tile 1 | Spray-painting the fluted pantry doors, sped up 2× to 19.4 s at 30 fps, **no audio** (it was dropped) |
-| `custom-pantry` | Gallery, homepage teaser | Finished Color Drench pantry, 9.7 s |
-| `daughter-closet` | Gallery, homepage teaser | Custom closet for our daughter, empty → finished reveal, 32.2 s |
-| `his-her-closets` | Gallery, homepage teaser | Finished his & her walk-in closets, 12.6 s |
-| `workshop-panel-glue-up` | Homepage Behind-the-Build tile 2 (Joinery) | Gluing up and clamping a cabinet panel, 25.3 s |
-
-A time-lapse is made with `-vf "setpts=PTS/2,fps=30,scale=-2:1080" -an` (2× speed; raise the divisor for faster).
-Drop the audio, because sped-up sound is unpleasant.
+| `custom-pantry` | Gallery | Color-drenched pantry walkthrough, 9.7 s |
+| `closet-reveal` | Gallery | Pale blue walk-in closet, empty → finished reveal, 32.2 s |
+| `his-her-closets` | Gallery | Finished his & hers walk-in closet, 12.6 s |
 
 **Privacy.** Never put children's names in captions, alt text, file names, or commits. Before publishing, check the frames
 for name signs or decals, house numbers, readable family photos, and faces.
@@ -298,10 +285,10 @@ Netlify Forms, or a serverless function) with **server-side validation and sanit
 
 ## Roadmap
 
-- Real project photography (responsive `srcset`, AVIF/WebP), Jessica's portrait, and WebVTT captions for the videos.
+- More finished-room photography (responsive `srcset`, AVIF/WebP).
 - After the mock-up / business-design phase, decide whether and how the form should deliver submissions and uploads (it intentionally sends nothing today).
-- Individual project case-study pages linked from the gallery, and a dedicated Trade Program page.
-- Self-host the Behind-the-Build videos (with WebVTT captions), and add privacy policy and terms pages.
+- Individual project case-study pages linked from the gallery.
+- WebVTT captions for the videos, and privacy policy and terms pages.
 - `LocalBusiness` structured data (JSON-LD in an external file), plus Lighthouse and axe checks in CI.
 
 ## License

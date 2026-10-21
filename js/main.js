@@ -138,7 +138,7 @@
         return;
       }
 
-      // Preview note. Built with DOM nodes + textContent (never innerHTML). The form is NOT reset,
+      // Preview note. Created with DOM nodes + textContent (never innerHTML). The form is NOT reset,
       // so the visitor keeps what they typed and can copy it into an email.
       var firstName = clean(form.elements.name.value).split(/\s+/)[0];
       var heading = document.createElement("strong");
@@ -281,7 +281,7 @@
 
   // 4. Gallery -----------------------------------------------------------------
   // Markup contract (gallery.html): each project is
-  //   <figure class="gallery-item" data-category="playhouses|bunk-rooms|closets|bedrooms|living-spaces|commercial"> (space-separated for more than one)
+  //   <figure class="gallery-item" data-category="closets|bedrooms|living-spaces|offices|laundry|pantries|playrooms"> (space-separated for more than one)
   //     <a class="gallery-link" href="full-size image"><img alt="..."></a>
   //     <div class="gallery-set" hidden><a href="photo-2" data-alt="..." data-width data-height></a>…</div>  (optional)
   //     <figcaption>...</figcaption>

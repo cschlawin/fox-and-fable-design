@@ -9,8 +9,8 @@
    5.  Layout primitives
    6.  Buttons & links
    7.  Header & navigation
-   8.  Hero (home) & page heroes (about, gallery)
-   9.  Home sections: Worlds, Process, Values, Designers, Commercial, Build, Gallery teaser
+   8.  Page heroes (about, gallery)
+   9.  Shared photo pattern and value grid (about)
    10. Consultation form
    11. About page
    12. Gallery page & lightbox
@@ -160,11 +160,6 @@ main:focus { outline: none; }
   content: ""; width: 28px; height: 1.5px; background: currentColor; flex: none;
 }
 .split { display: grid; gap: var(--space-6); align-items: center; }
-.placeholder-tag {
-  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
-  color: var(--c-iron);
-}
-.prose > * + * { margin-top: var(--space-3); }
 
 /* 6. Buttons & links ------------------------------------------------------ */
 .btn {
@@ -240,129 +235,19 @@ main:focus { outline: none; }
 .js .primary-nav:not(.is-open) { display: none; }
 .no-js .nav-toggle { display: none; }
 .no-js .header-inner { flex-wrap: wrap; }
-
-/* 8. Hero & page heroes --------------------------------------------------- */
-.hero { padding-block: var(--space-6) var(--space-7); }
-.hero-grid { display: grid; gap: var(--space-6); align-items: center; }
-.hero h1 em { font-style: italic; font-weight: 500; color: var(--c-oak-deep); }
 .lede { margin-top: var(--space-4); font-size: var(--fs-500); color: var(--c-iron); max-width: 34rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-5); }
-.hero-note { margin-top: var(--space-4); font-size: var(--fs-300); color: var(--c-iron); }
-.hero-art { display: grid; gap: var(--space-2); justify-items: center; }
-/* Hero sign rendering: shown whole (no crop) so the lettering is never cut off */
-.hero-art picture { display: block; width: 100%; max-width: 520px; }
-.hero-sign {
-  display: block; width: 100%; height: auto; border-radius: var(--radius-lg);
-  box-shadow: var(--shadow); background: #d9cbb4;
-}
 
 .page-hero { padding-block: var(--space-6) var(--space-5); }
 .page-hero .lede { max-width: 40rem; }
 
-/* 9a. Featured Worlds ---------------------------------------------------- */
-.world-grid { display: grid; gap: var(--space-5); }
-.world-card {
-  display: flex; flex-direction: column; background: var(--c-paper); border-radius: var(--radius);
-  overflow: hidden; box-shadow: var(--shadow); transition: transform .3s var(--ease);
-}
-.world-card:hover { transform: translateY(-4px); }
-.world-art { position: relative; }
-.world-art svg { width: 100%; height: auto; aspect-ratio: 10 / 7; }
-.world-art .placeholder-tag {
-  position: absolute; left: 0.75rem; bottom: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 999px;
-  background: rgb(251 248 242 / 0.9); color: var(--c-ink);
-}
-.world-body { padding: var(--space-4); }
-.world-body h3 { margin-bottom: var(--space-2); }
-.world-body p { color: var(--c-iron); font-size: 0.95rem; }
-
-/* 9b. Process timeline --------------------------------------------------- */
-.process { background: var(--c-parchment-2); }
-.timeline { display: grid; gap: var(--space-5); }
-.step { position: relative; padding: var(--space-5) var(--space-4); background: var(--c-paper); border-radius: var(--radius); border-top: 3px solid var(--c-oak); }
-.step-num { font-variant-numeric: lining-nums; font-family: var(--font-serif); font-size: 3rem; line-height: 1; color: var(--c-oak-deep); font-weight: 600; }
-.step h3 { margin-block: var(--space-2) var(--space-3); }
-.step-time {
-  display: block; margin-top: var(--space-2); font-family: var(--font-sans); font-size: 0.78rem;
-  font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-oak-deep);
-}
-.step p { color: var(--c-iron); }
-
 /* 9c. Values ------------------------------------------------------------- */
 .value-grid { display: grid; gap: var(--space-5); }
 .value { padding-top: var(--space-4); border-top: 1px solid rgb(43 42 40 / 0.18); }
-.value-icon { width: 44px; height: 44px; color: var(--c-oak-deep); margin-bottom: var(--space-3); }
 .value h3 { font-size: 1.5rem; margin-bottom: var(--space-2); }
 .value p { color: var(--c-iron); }
-.brand-stamp {
-  display: grid; gap: var(--space-4); align-items: center; margin-top: var(--space-6);
-  padding: var(--space-5); border-radius: var(--radius); background: var(--tex-wood);
-  box-shadow: inset 0 0 0 1px rgb(110 80 52 / 0.18);
-}
-.brand-stamp-mark { display: block; width: 110px; height: auto; opacity: 0.88; }
-.brand-stamp p { color: var(--c-ink); max-width: 46rem; }
-.values-more { margin-top: var(--space-5); }
 
-/* 9d. Designers (charcoal band) ----------------------------------------- */
-.designers { background: var(--tex-iron), var(--c-ink); color: var(--c-on-dark); }
-.designers h2, .designers h3 { color: var(--c-parchment); }
-.designers .eyebrow { color: var(--c-oak-light); }
-.designers h2 + p { margin-top: var(--space-4); font-size: var(--fs-500); }
-.designers .btn-light { margin-top: var(--space-5); }
-.trade-cards { display: grid; gap: var(--space-4); }
-.trade-card { padding: var(--space-5); border: 1px solid rgb(243 238 228 / 0.16); border-radius: var(--radius); background: var(--c-ink-soft); }
-.trade-card h3 { margin-block: 0 var(--space-2); }
-
-/* 9e. Commercial --------------------------------------------------------- */
-.commercial-grid { display: grid; gap: var(--space-4); }
-.commercial-card {
-  padding: var(--space-5); border-radius: var(--radius); background: var(--c-paper);
-  border-left: 3px solid var(--c-oak);
-}
-.commercial-card:nth-child(2) { border-left-color: var(--c-iron); }
-.commercial-card:nth-child(3) { border-left-color: var(--c-sage); }
-.commercial-card h3 { margin-bottom: var(--space-2); }
-.commercial-card p { color: var(--c-iron); }
-
-/* 9f. Behind-the-Build (oak band) --------------------------------------- */
-.build { background: var(--tex-wood); }
-.build .eyebrow { color: var(--c-oak-dark); }
-.section-head-row { max-width: none; display: grid; gap: var(--space-3); }
-.build-links { color: var(--c-iron); max-width: 30rem; }
-.build-links a { color: var(--c-oak-dark); }
-.build-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
-.build-tile {
-  position: relative; aspect-ratio: 3 / 4; border-radius: var(--radius); overflow: hidden;
-  display: flex; flex-direction: column; justify-content: flex-end; padding: var(--space-3);
-}
-.build-tile::before { /* decorative play button */
-  content: ""; position: absolute; top: 38%; left: 50%; width: 52px; height: 52px; transform: translate(-50%, -50%);
-  border-radius: 50%; background: rgb(243 238 228 / 0.88);
-}
-.build-tile::after {
-  content: ""; position: absolute; top: 38%; left: 50%; transform: translate(-35%, -50%);
-  border-style: solid; border-width: 9px 0 9px 15px; border-color: transparent transparent transparent var(--c-ink);
-}
-.tile-a { background: linear-gradient(165deg, #b07a45, #8a5a2e 60%, #5c3d22); }
-.tile-b { background: linear-gradient(165deg, #6b6a66, #4a4a48 60%, #2b2a28); }
-.tile-c { background: linear-gradient(165deg, #c9a77c, #9a6f45 55%, #6e5034); }
-.tile-d { background: linear-gradient(165deg, #8d9179, #6c7060 55%, #3f4236); }
-.tile-label { position: relative; z-index: 1; font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; color: #fff; text-shadow: 0 1px 8px rgb(0 0 0 / 0.35); }
-.build-tile .placeholder-tag { position: relative; z-index: 1; color: rgb(255 255 255 / 0.92); text-shadow: 0 1px 6px rgb(0 0 0 / 0.4); }
-.testimonial-slot {
-  margin-top: var(--space-6); padding: var(--space-5); border: 1.5px dashed rgb(110 80 52 / 0.5);
-  border-radius: var(--radius); text-align: center; background: rgb(251 248 242 / 0.5);
-}
-.testimonial-slot blockquote p { font-family: var(--font-serif); font-style: italic; font-size: var(--fs-600); color: var(--c-ink); }
-.testimonial-slot figcaption { margin-top: var(--space-3); }
-
-/* 9g. Gallery teaser ----------------------------------------------------- */
-.teaser { background: var(--c-parchment-2); } /* alternate band: hero / gallery / worlds / process */
-.teaser-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(2, 1fr); }
-.teaser-grid figure:first-child { grid-column: 1 / -1; }
-.teaser-more { margin-top: var(--space-5); }
-
-/* Shared photo-placeholder pattern (about + gallery + teaser) */
+/* Shared photo pattern (about + gallery) */
 .photo { position: relative; margin: 0; }
 .photo img {
   width: 100%; object-fit: cover; border-radius: var(--radius); background: var(--c-parchment-2);
@@ -370,13 +255,6 @@ main:focus { outline: none; }
 }
 .ratio-landscape img { aspect-ratio: 4 / 3; }
 .ratio-portrait img { aspect-ratio: 4 / 5; }
-.ratio-square img { aspect-ratio: 1 / 1; }
-.ph-label { /* remove this span once a real photo is in place */
-  position: absolute; left: 0.75rem; top: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 999px;
-  background: rgb(251 248 242 / 0.92); color: var(--c-ink);
-  font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-  max-width: calc(100% - 1.5rem); line-height: 1.4; border-radius: var(--radius-sm);
-}
 .photo figcaption { margin-top: var(--space-2); font-size: 0.85rem; color: var(--c-iron); }
 
 /* 10. Consultation form -------------------------------------------------- */
@@ -450,7 +328,6 @@ main:focus { outline: none; }
   background: transparent; color: var(--c-oak-deep); font-size: 0.8rem; font-weight: 600; cursor: pointer;
 }
 .file-remove:hover { background: var(--c-parchment-2); color: var(--c-ink); }
-.file-count { font-size: 0.8rem; color: var(--c-iron); }
 
 /* 11. About page --------------------------------------------------------- */
 .founder { display: grid; gap: var(--space-5); align-items: start; }
@@ -458,7 +335,7 @@ main:focus { outline: none; }
 .founder h2 { margin-bottom: var(--space-2); }
 .founder-role { font-size: 0.78rem; font-weight: 600; letter-spacing: var(--track-caps); text-transform: uppercase; color: var(--c-oak-deep); }
 .founder h3 { font-size: 1.5rem; margin-top: var(--space-5); }
-/* Fill-in prompts: obviously unfinished copy for the family to replace */
+/* Fill-in prompts: obviously unfinished copy to replace */
 .prompt {
   margin-top: var(--space-2); padding: var(--space-3) var(--space-4);
   border: 1.5px dashed rgb(110 80 52 / 0.55); border-radius: var(--radius-sm);
@@ -468,7 +345,6 @@ main:focus { outline: none; }
   content: "Placeholder"; display: block; margin-bottom: 0.2rem; font-style: normal;
   font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-oak-deep);
 }
-.family-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(2, 1fr); }
 .story-band { background: var(--c-parchment-2); }
 .cta-band { background: var(--tex-iron), var(--c-ink); color: var(--c-on-dark); text-align: center; }
 .cta-band h2 { color: var(--c-parchment); }
@@ -546,22 +422,11 @@ main:focus { outline: none; }
 
 /* 14. Breakpoints -------------------------------------------------------- */
 @media (min-width: 720px) {
-  .world-grid { grid-template-columns: repeat(2, 1fr); }
-  .timeline { grid-template-columns: repeat(3, 1fr); }
   .value-grid { grid-template-columns: repeat(2, 1fr); }
-  .trade-cards { grid-template-columns: repeat(2, 1fr); }
-  .commercial-grid { grid-template-columns: repeat(3, 1fr); }
-  .build-strip { grid-template-columns: repeat(4, 1fr); }
-  .build-tile { aspect-ratio: 4 / 5; }
-  .tile-label { font-size: 1.35rem; }
   .field-grid { grid-template-columns: repeat(2, 1fr); }
   .field-full { grid-column: 1 / -1; }
   .consult-form { padding: var(--space-6) var(--space-5); }
   .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; align-items: start; }
-  .section-head-row { grid-template-columns: 1fr auto; align-items: end; }
-  .brand-stamp { grid-template-columns: auto 1fr; }
-  .teaser-grid { grid-template-columns: 4fr 3fr 3fr; } /* 4:3 + two 1:1 tiles share one height */
-  .teaser-grid figure:first-child { grid-column: auto; }
   .founder { grid-template-columns: minmax(240px, 0.8fr) 1.2fr; gap: var(--space-6); }
 
 }
@@ -581,9 +446,6 @@ main:focus { outline: none; }
   .primary-nav a:not(.btn):hover::after, .primary-nav a[aria-current="page"]::after { transform: scaleX(1); }
   .nav-cta-item { margin: 0 0 0 var(--space-2); }
   .nav-cta-item .btn { width: auto; }
-
-  .hero-grid { grid-template-columns: 1.1fr 1fr; gap: var(--space-7); }
-  .world-grid { grid-template-columns: repeat(4, 1fr); }
   .value-grid { grid-template-columns: repeat(4, 1fr); }
   .split { grid-template-columns: 1.1fr 1fr; gap: var(--space-7); }
   .split-form { grid-template-columns: 0.8fr 1.2fr; }
@@ -595,53 +457,23 @@ main:focus { outline: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-  .btn:hover, .world-card:hover { transform: none; }
+  .btn:hover { transform: none; }
 }
 
 /* 16. Page-specific additions ------------------------------------------- */
-.family { margin-top: var(--space-7); }
-.family-title { margin-bottom: var(--space-2); }
-.family .prompt { max-width: 46rem; margin-bottom: var(--space-4); }
 .story-band .value h3 { margin-top: 0; }
 .lightbox-count { align-self: center; font-size: 0.85rem; margin-right: auto; margin-left: var(--space-2); }
 .lightbox-controls { flex-wrap: wrap; }
 .gallery-item .photo, .gallery-item { position: relative; }
-
-/* 17. Featured family photo & gallery video ---------------------------- */
-.ratio-tall img { aspect-ratio: 3 / 4; }
-.family-grid { grid-template-columns: 1fr 1fr; align-items: start; }
-.family-featured { grid-column: 1 / -1; }
 .gallery-video {
   display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
   border-radius: var(--radius); background: var(--c-parchment-2);
   box-shadow: inset 0 0 0 1px rgb(43 42 40 / 0.08);
 }
 .ratio-reel .gallery-video { aspect-ratio: 9 / 16; }
-.video-note { display: block; margin-top: 0.15rem; font-size: 0.8rem; font-style: italic; color: var(--c-iron); }
 
-.ratio-wide img { aspect-ratio: 3 / 2; object-fit: cover; }
-.family-wide { grid-column: 1 / -1; }
-.family-featured { grid-column: auto; } /* mobile: two portraits side by side, landscape full width below */
-.photo-credit { display: block; font-size: 0.78rem; color: var(--c-iron); }
-@media (min-width: 720px) {
-  /* Two 3:4 portraits + one 3:2 landscape. At 1fr : 1fr : 2fr all three photos are the same height */
-  .family-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr); gap: var(--space-4); max-width: 1200px; }
-  .family-featured, .family-snow, .family-wide { grid-column: auto; grid-row: auto; }
-}
-.teaser-link { display: block; border-radius: var(--radius); }
-.teaser .photo img { object-fit: cover; }
-.teaser .photo:first-child img { object-position: 50% 45%; }
-
-/* 18. Behind-the-Build video tiles */
+/* 18. Video items */
 .video-item { position: relative; }
-.build-video { grid-row: span 2; }
-.build-video figure { margin: 0; }
-.build-video-el { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; border-radius: var(--radius); background: var(--c-ink); }
-.build-video figcaption { margin-top: var(--space-2); font-size: 0.9rem; color: var(--c-iron); }
-@media (min-width: 720px) {
-  .build-video { grid-row: auto; }
-  .build-strip { align-items: start; }
-}
 
 /* Gallery: row-major grid so items read left to right in source order */
 .gallery-grid { columns: auto; display: grid; grid-template-columns: 1fr; column-gap: var(--space-4); row-gap: 0; align-items: start; }
@@ -652,7 +484,6 @@ main:focus { outline: none; }
   padding: 0.2rem 0.6rem; border-radius: 999px; background: rgb(43 42 40 / 0.8); color: var(--c-parchment);
   font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
 }
-.ratio-tall img { object-fit: cover; }
 .before-btn {
   display: inline-block; margin-top: var(--space-2); padding: 0.45rem 0.9rem; min-height: 44px;
   border: 1px solid var(--c-oak-deep); border-radius: 999px; background: transparent; color: var(--c-oak-deep);
@@ -691,7 +522,6 @@ main:focus { outline: none; }
 .home-service { padding-top: var(--space-4); border-top: 1px solid rgb(43 42 40 / 0.22); }
 .home-service h3 { font-weight: 500; }
 .home-service p { margin-top: var(--space-2); color: var(--c-iron); }
-.home-service .home-service-note { margin-top: var(--space-3); font-family: var(--font-serif); font-style: italic; font-size: 1.15rem; color: var(--c-oak-deep); }
 
 .home-portfolio { background: var(--c-parchment-2); }
 .home-head-row { max-width: none; display: grid; gap: var(--space-3); }
