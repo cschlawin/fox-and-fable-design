@@ -9,16 +9,16 @@
        frame-ancestors cannot be set via <meta>; it is sent as an HTTP header in _headers. -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Portfolio | Fox &amp; Fable Interior Design</title>
-  <meta name="description" content="Finished rooms designed by Fox &amp; Fable: closets, bedrooms, living spaces, home offices, laundry rooms, pantries and playrooms.">
+  <title>Room Tours | Fox &amp; Fable</title>
+  <meta name="description" content="Room tours from Jessica at Fox &amp; Fable: closets, bedrooms, living spaces, home offices, laundry rooms, pantries and playrooms.">
   <meta name="theme-color" content="#2B2A28">
   <link rel="canonical" href="https://www.foxandfable.com/gallery.html">
 
   <!-- Open Graph / social preview (domain is a placeholder) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Fox &amp; Fable">
-  <meta property="og:title" content="Portfolio | Fox &amp; Fable">
-  <meta property="og:description" content="Finished rooms designed by Fox &amp; Fable, from color-drenched offices to layered living spaces.">
+  <meta property="og:title" content="Room Tours | Fox &amp; Fable">
+  <meta property="og:description" content="Come on in: room tours from color-drenched offices to cozy, layered bedrooms.">
   <meta property="og:url" content="https://www.foxandfable.com/gallery.html">
   <meta property="og:image" content="https://www.foxandfable.com/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -35,9 +35,9 @@
 
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=16">
+  <link rel="stylesheet" href="css/styles.css?v=17">
   <!-- Loaded (not deferred) so it can swap .no-js → .js before first paint; DOM work waits for DOMContentLoaded. -->
-  <script src="js/main.js?v=16"></script>
+  <script src="js/main.js?v=17"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -57,11 +57,12 @@
 
       <nav id="primary-nav" class="primary-nav" aria-label="Primary">
         <ul>
-          <li><a href="index.html#services">Services</a></li>
-          <li><a href="gallery.html" aria-current="page">Portfolio</a></li>
-          <li><a href="index.html#process">Process</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html" aria-current="page">Room Tours</a></li>
+          <li><a href="index.html#shop">Shop</a></li>
+          <li><a href="index.html#journal">Journal</a></li>
           <li><a href="about.html">About</a></li>
-          <li class="nav-cta-item"><a class="btn btn-primary btn-sm" href="index.html#consult">Start a Project</a></li>
+          <li class="nav-cta-item"><a class="btn btn-primary btn-sm" href="index.html#work">Work With Me</a></li>
         </ul>
       </nav>
     </div>
@@ -71,16 +72,16 @@
 
     <section class="page-hero" aria-labelledby="gallery-title">
       <div class="container">
-        <p class="eyebrow">Portfolio</p>
-        <h1 id="gallery-title">Finished Rooms</h1>
-        <p class="lede">A look at finished spaces, from color-drenched offices and pantries to layered bedrooms and living rooms. Open a project to see every photo, including the before.</p>
+        <p class="eyebrow">Room tours</p>
+        <h1 id="gallery-title">Come on in.</h1>
+        <p class="lede">Pull up a chair and take a look around. From moody color drenches to cozy, layered bedrooms, open any room to see every photo, including the before.</p>
       </div>
     </section>
 
-    <section class="section gallery" aria-label="Projects">
+    <section class="section gallery" aria-label="Room tours">
       <div class="container">
         <!-- Filters: revealed by JS (hidden for .no-js, where every project simply shows) -->
-        <div class="filter-bar" role="group" aria-label="Filter projects by type">
+        <div class="filter-bar" role="group" aria-label="Filter room tours by type">
           <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All</button>
           <button class="filter-btn" type="button" data-filter="closets" aria-pressed="false">Closets &amp; Storage</button>
           <button class="filter-btn" type="button" data-filter="bedrooms" aria-pressed="false">Bedrooms</button>
@@ -98,7 +99,7 @@
           <figure class="gallery-item photo ratio-reel video-item" data-category="pantries">
             <video class="gallery-video" controls preload="none" playsinline width="608" height="1080"
                    poster="assets/images/gallery/pantry-poster.webp"
-                   aria-label="Video: walkthrough of a blue-gray color-drenched pantry designed by Fox &amp; Fable">
+                   aria-label="Video: walkthrough of a blue-gray color-drenched pantry">
               <source src="assets/video/custom-pantry.webm" type="video/webm">
               <source src="assets/video/custom-pantry.mp4" type="video/mp4">
               <p>Your browser doesn't support embedded video. <a href="assets/video/custom-pantry.mp4">Download the pantry video (MP4)</a>.</p>
@@ -110,7 +111,7 @@
           <figure class="gallery-item photo ratio-reel video-item" data-category="closets">
             <video class="gallery-video" controls preload="none" playsinline width="608" height="1080"
                    poster="assets/images/gallery/closet-reveal-poster.webp"
-                   aria-label="Video: reveal of a pale blue walk-in closet with a vanity, designed by Fox &amp; Fable">
+                   aria-label="Video: reveal of a pale blue walk-in closet with a vanity">
               <source src="assets/video/closet-reveal.webm" type="video/webm">
               <source src="assets/video/closet-reveal.mp4" type="video/mp4">
               <p>Your browser doesn't support embedded video. <a href="assets/video/closet-reveal.mp4">Download the closet video (MP4)</a>.</p>
@@ -121,7 +122,7 @@
           <figure class="gallery-item photo ratio-reel video-item" data-category="closets">
             <video class="gallery-video" controls preload="none" playsinline width="608" height="1080"
                    poster="assets/images/gallery/his-her-closets-poster.webp"
-                   aria-label="Video: his and hers walk-in closet in pale taupe, designed by Fox &amp; Fable">
+                   aria-label="Video: his and hers walk-in closet in pale taupe">
               <source src="assets/video/his-her-closets.webm" type="video/webm">
               <source src="assets/video/his-her-closets.mp4" type="video/mp4">
               <p>Your browser doesn't support embedded video. <a href="assets/video/his-her-closets.mp4">Download the closet video (MP4)</a>.</p>
@@ -459,10 +460,10 @@
 
     <section class="section cta-band" aria-labelledby="cta-title">
       <div class="container">
-        <p class="eyebrow">Your project next</p>
-        <h2 id="cta-title">Picture your room here.</h2>
-        <p>Tell us about your space and we'll set up a design consultation.</p>
-        <a class="btn btn-light" href="index.html#consult">Start a Project</a>
+        <p class="eyebrow">Work with me</p>
+        <h2 id="cta-title">Let's create something together.</h2>
+        <p>Brand collaborations, sponsored content, design consultations, press, or just saying hi.</p>
+        <a class="btn btn-light" href="index.html#work">Work With Me</a>
       </div>
     </section>
   </main>
@@ -488,21 +489,22 @@
         <a href="index.html" class="footer-logo-link">
           <picture><source type="image/webp" srcset="assets/logo/horizontal-light-360.webp 360w, assets/logo/horizontal-light-720.webp 720w" sizes="(min-width: 400px) 340px, calc(100vw - 2.5rem)"><img class="footer-logo" src="assets/logo/horizontal-light-360.png" srcset="assets/logo/horizontal-light-360.png 360w, assets/logo/horizontal-light-720.png 720w" sizes="(min-width: 400px) 340px, calc(100vw - 2.5rem)" width="360" height="91" alt="Fox &amp; Fable"></picture>
         </a>
-        <p class="footer-tagline">Interior Design</p>
-        <p>Warm, layered, livable interiors in the Greater Salt&nbsp;Lake Area,&nbsp;Utah.</p>
+        <p class="footer-tagline">Home &amp; Lifestyle</p>
+        <p>Home, design &amp; everyday living with Jessica, from the Greater Salt&nbsp;Lake Area,&nbsp;Utah.</p>
       </div>
       <nav class="footer-nav" aria-label="Footer">
         <p class="footer-heading">Explore</p>
         <ul class="list-reset">
-          <li><a href="index.html#services">Services</a></li>
-          <li><a href="gallery.html">Portfolio</a></li>
-          <li><a href="index.html#process">Process</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Room Tours</a></li>
+          <li><a href="index.html#shop">Shop</a></li>
+          <li><a href="index.html#journal">Journal</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="index.html#consult">Start a Project</a></li>
+          <li><a href="index.html#work">Work With Me</a></li>
         </ul>
       </nav>
       <div>
-        <p class="footer-heading">Visit &amp; contact</p>
+        <p class="footer-heading">Say hello</p>
         <address class="footer-contact">
           Greater Salt&nbsp;Lake Area,&nbsp;Utah<br>
           <a href="mailto:hello@foxandfable.com">hello@foxandfable.com</a> <span class="placeholder-inline">(placeholder)</span>
@@ -513,6 +515,9 @@
           </a></li>
           <li><a href="#" rel="noopener noreferrer" aria-label="Fox &amp; Fable on Pinterest (placeholder link)">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 8.5c3-1 5 .8 4.5 3.2-.4 2-2.4 3-3.8 2.2M12 10.5 9.8 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </a></li>
+          <li><a href="#" rel="noopener noreferrer" aria-label="Fox &amp; Fable on TikTok (placeholder link)">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5M14 4c.4 2.6 2.2 4.3 5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a></li>
         </ul>
       </div>

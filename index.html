@@ -9,16 +9,16 @@
        frame-ancestors cannot be set via <meta>; it is sent as an HTTP header in _headers. -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Fox &amp; Fable | Interior Design, Greater Salt Lake Area, Utah</title>
-  <meta name="description" content="Fox &amp; Fable is an interior design studio in the Greater Salt Lake Area, Utah, creating warm, layered rooms that feel personal and lived-in.">
+  <title>Fox &amp; Fable | Home, Design &amp; Everyday Living with Jessica</title>
+  <meta name="description" content="Fox &amp; Fable is Jessica's home and lifestyle space: room tours, favorite finds and design ideas from the Greater Salt Lake Area, Utah.">
   <meta name="theme-color" content="#2B2A28">
   <link rel="canonical" href="https://www.foxandfable.com/">
 
   <!-- Open Graph / social preview (domain is a placeholder) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Fox &amp; Fable">
-  <meta property="og:title" content="Fox &amp; Fable | Interior Design">
-  <meta property="og:description" content="Warm, layered, livable interiors in the Greater Salt Lake Area, Utah.">
+  <meta property="og:title" content="Fox &amp; Fable | Home, Design &amp; Everyday Living">
+  <meta property="og:description" content="Come on in: room tours, favorite finds and design ideas from Jessica's home in the Greater Salt Lake Area, Utah.">
   <meta property="og:url" content="https://www.foxandfable.com/">
   <meta property="og:image" content="https://www.foxandfable.com/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -35,9 +35,9 @@
 
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=16">
+  <link rel="stylesheet" href="css/styles.css?v=17">
   <!-- Loaded (not deferred) so it can swap .no-js → .js before first paint; DOM work waits for DOMContentLoaded. -->
-  <script src="js/main.js?v=16"></script>
+  <script src="js/main.js?v=17"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -57,11 +57,12 @@
 
       <nav id="primary-nav" class="primary-nav" aria-label="Primary">
         <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="gallery.html">Portfolio</a></li>
-          <li><a href="#process">Process</a></li>
+          <li><a href="#top" aria-current="page">Home</a></li>
+          <li><a href="gallery.html">Room Tours</a></li>
+          <li><a href="#shop">Shop</a></li>
+          <li><a href="#journal">Journal</a></li>
           <li><a href="about.html">About</a></li>
-          <li class="nav-cta-item"><a class="btn btn-primary btn-sm" href="#consult">Start a Project</a></li>
+          <li class="nav-cta-item"><a class="btn btn-primary btn-sm" href="#work">Work With Me</a></li>
         </ul>
       </nav>
     </div>
@@ -69,19 +70,19 @@
 
   <main id="main" tabindex="-1">
 
-    <!-- ===================== Hero ===================== -->
+    <!-- ===================== Hero: a hello from Jessica ===================== -->
     <section id="top" class="home-hero" aria-labelledby="hero-title">
       <div class="container home-hero-grid">
         <div class="home-hero-copy">
-          <p class="eyebrow">Interior Design Studio</p>
-          <h1 id="hero-title">Rooms that feel <em>like home.</em></h1>
-          <p class="home-hero-tagline">Warm. Layered. Unmistakably yours.</p>
-          <p class="home-hero-lede">Interior design shaped around the way you live: considered palettes, natural materials, and rooms that feel collected rather than decorated.</p>
+          <p class="eyebrow">Hello &amp; welcome</p>
+          <h1 id="hero-title">Come on in, <em>make yourself at home.</em></h1>
+          <p class="home-hero-tagline">Hi, I'm Jessica.</p>
+          <p class="home-hero-lede">This is where I share my home, one room at a time: the makeovers, the colors I keep coming back to, and the little details that make a house feel like ours.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#consult">Start Your Project</a>
-            <a class="btn btn-ghost" href="gallery.html">View the Portfolio</a>
+            <a class="btn btn-primary" href="gallery.html">Take a Room Tour</a>
+            <a class="btn btn-ghost" href="#follow">Follow Along</a>
           </div>
-          <p class="home-hero-place">Interior design · <span class="home-place-loc">Greater <span class="nowrap">Salt Lake</span> <span class="nowrap">Area, Utah</span></span></p>
+          <p class="home-hero-place">Home, design &amp; everyday living · <span class="home-place-loc">Greater <span class="nowrap">Salt Lake</span> <span class="nowrap">Area, Utah</span></span></p>
         </div>
         <figure class="home-hero-media">
           <picture>
@@ -93,53 +94,31 @@
       </div>
     </section>
 
-    <!-- ===================== Intro ===================== -->
-    <section class="section home-intro" aria-labelledby="intro-title">
-      <div class="container home-intro-inner">
-        <p class="eyebrow">Our approach</p>
-        <h2 id="intro-title">A home should feel like the people who live in it.</h2>
-        <p>We design rooms for real life: natural materials, soft light, pieces with a story, and space to gather. Every project begins with how you want a room to feel, and ends with a home that feels unmistakably yours.</p>
-      </div>
-    </section>
-
-    <!-- ===================== Services ===================== -->
-    <section id="services" class="section home-services" aria-labelledby="services-title">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Services</p>
-          <h2 id="services-title">Ways to work with us.</h2>
-          <p>From a single room to the whole house, every detail is designed around how you live.</p>
+    <!-- ===================== A little about me ===================== -->
+    <section class="section home-about" aria-labelledby="intro-title">
+      <div class="container home-me">
+        <picture class="home-me-photo">
+          <source srcset="assets/images/about/jessica.webp" type="image/webp">
+          <img src="assets/images/about/jessica.jpg" width="456" height="570" loading="lazy" decoding="async" alt="Jessica smiling outdoors in the snow, with the mountains behind her">
+        </picture>
+        <div class="home-me-copy">
+          <p class="eyebrow">A little about me</p>
+          <h2 id="intro-title">Wife, mom of three, and forever dreaming up the next room.</h2>
+          <p>We're making our home in the greater Salt Lake City area feel more intentional and uniquely ours, room by room. I'm so glad you're here.</p>
+          <a class="text-link" href="about.html">Read my story <span aria-hidden="true">→</span></a>
         </div>
-        <ul class="home-service-grid list-reset">
-          <li class="home-service">
-            <h3>Full-service interior design</h3>
-            <p>From the first walkthrough to the last styled shelf, we guide layout, materials, finishes and furnishings, for one room or the whole home.</p>
-          </li>
-          <li class="home-service">
-            <h3>Room refreshes &amp; styling</h3>
-            <p>Paint, lighting, textiles and a fresh edit of what you already own, so a room feels new without starting over.</p>
-          </li>
-          <li class="home-service">
-            <h3>Design consultations</h3>
-            <p>A focused session in your home or virtually, ending with a clear direction you can carry out at your own pace.</p>
-          </li>
-          <li class="home-service">
-            <h3>Cabinetry &amp; accent wall design</h3>
-            <p>Layouts, drawings and finish selections for cabinetry, paneling, accent walls and beams, specified to suit your room and your style.</p>
-          </li>
-        </ul>
       </div>
     </section>
 
-    <!-- ===================== Featured portfolio ===================== -->
-    <section id="portfolio" class="section home-portfolio" aria-labelledby="portfolio-title">
+    <!-- ===================== Room tours ===================== -->
+    <section id="tours" class="section home-portfolio" aria-labelledby="tours-title">
       <div class="container">
         <div class="section-head home-head-row">
           <div>
-            <p class="eyebrow">Portfolio</p>
-            <h2 id="portfolio-title">Recent rooms.</h2>
+            <p class="eyebrow">Room tours</p>
+            <h2 id="tours-title">Step inside my spaces.</h2>
           </div>
-          <a class="text-link" href="gallery.html">See the full portfolio <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="gallery.html">See every room tour <span aria-hidden="true">→</span></a>
         </div>
         <ul class="home-card-grid list-reset">
           <li class="home-card">
@@ -155,11 +134,11 @@
           <li class="home-card">
             <a class="home-card-link" href="gallery.html">
               <picture>
-                <source type="image/webp" srcset="assets/images/gallery/office-sd-1-card-480.webp 480w, assets/images/gallery/office-sd-1-card-960.webp 960w" sizes="(min-width: 1100px) 280px, (min-width: 720px) calc(50vw - 2.5rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/office-sd-1-card-480.jpg" srcset="assets/images/gallery/office-sd-1-card-480.jpg 480w, assets/images/gallery/office-sd-1-card-960.jpg 960w" sizes="(min-width: 1100px) 280px, (min-width: 720px) calc(50vw - 2.5rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async" alt="Home office color-drenched in deep navy on the walls and ceiling, with a natural maple desk, a brass sputnik chandelier, a vintage-style rug, and a cream studded accent chair">
+                <source type="image/webp" srcset="assets/images/gallery/closet-ks-1-card-480.webp 480w, assets/images/gallery/closet-ks-1-card-960.webp 960w" sizes="(min-width: 1100px) 280px, (min-width: 720px) calc(50vw - 2.5rem), calc(100vw - 2.5rem)">
+                <img src="assets/images/gallery/closet-ks-1-card-480.jpg" srcset="assets/images/gallery/closet-ks-1-card-480.jpg 480w, assets/images/gallery/closet-ks-1-card-960.jpg 960w" sizes="(min-width: 1100px) 280px, (min-width: 720px) calc(50vw - 2.5rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async" alt="Walk-in closet with a pale blue hanging wall: clothes on gold rods in three bays, drawer banks with brass knobs, and lit open shelves">
               </picture>
-              <span class="home-card-cat">Home office</span>
-              <span class="home-card-title">Navy color drench &amp; brass accents</span>
+              <span class="home-card-cat">Closet</span>
+              <span class="home-card-title">A pale blue walk-in with a vanity</span>
             </a>
           </li>
           <li class="home-card">
@@ -186,84 +165,128 @@
       </div>
     </section>
 
-    <!-- ===================== Design approach ===================== -->
-    <section id="approach" class="section home-studio" aria-labelledby="approach-title">
-      <div class="container home-studio-grid">
-        <div class="home-studio-media">
-          <figure>
-            <picture>
-              <source type="image/webp" srcset="assets/images/home/bedroom-detail-480.webp 480w, assets/images/home/bedroom-detail-960.webp 960w" sizes="(min-width: 1100px) 320px, calc(50vw - 1.75rem)">
-              <img src="assets/images/home/bedroom-detail-480.jpg" srcset="assets/images/home/bedroom-detail-480.jpg 480w, assets/images/home/bedroom-detail-960.jpg 960w" sizes="(min-width: 1100px) 320px, calc(50vw - 1.75rem)" width="480" height="640" loading="lazy" decoding="async" alt="Bedside detail: a dark-wood nightstand with fluted drawer fronts and brass knobs against a whitewashed stone wall, a slim fluted-glass sconce, and an olive branch in a white vase">
-            </picture>
-            <figcaption>Texture: stone, wood &amp; brass</figcaption>
-          </figure>
-          <figure>
-            <picture>
-              <source type="image/webp" srcset="assets/images/home/pantry-finished-480.webp 480w, assets/images/home/pantry-finished-960.webp 960w" sizes="(min-width: 1100px) 320px, calc(50vw - 1.75rem)">
-              <img src="assets/images/home/pantry-finished-480.jpg" srcset="assets/images/home/pantry-finished-480.jpg 480w, assets/images/home/pantry-finished-960.jpg 960w" sizes="(min-width: 1100px) 320px, calc(50vw - 1.75rem)" width="480" height="640" loading="lazy" decoding="async" alt="A walk-in pantry color-drenched in deep blue-gray: fluted cabinet doors with brass pulls, open shelving, a counter with under-cabinet lighting, and a pleated table lamp">
-            </picture>
-            <figcaption>Color: a moody blue-gray drench</figcaption>
-          </figure>
-        </div>
-        <div class="home-studio-copy">
-          <p class="eyebrow">Design approach</p>
-          <h2 id="approach-title">Layered, livable, and personal.</h2>
-          <p>Jessica designs every room around how it should feel. That starts with a palette suited to the light, whether soft, sun-washed neutrals or a moody, enveloping color drench.</p>
-          <p>From there, the room comes together in layers: natural materials like stone, wood and brass, lighting at every level, textiles to soften, and pieces with a story. The result feels collected over time and made for everyday life.</p>
-          <a class="text-link" href="about.html">Meet Jessica <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== Process ===================== -->
-    <section id="process" class="section home-process" aria-labelledby="process-title">
+    <!-- ===================== Shop my home (placeholders only) ===================== -->
+    <section id="shop" class="section home-shop" aria-labelledby="shop-title">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Process</p>
-          <h2 id="process-title">How a project comes together.</h2>
+          <p class="eyebrow">Shop my home</p>
+          <h2 id="shop-title">Favorite finds.</h2>
+          <p>The pieces I love most and get asked about all the time, all in one place. Coming soon, along with shoppable room photos.</p>
         </div>
-        <ol class="home-steps">
-          <li class="home-step">
-            <span class="home-step-num" aria-hidden="true">01</span>
-            <h3>Consult</h3>
-            <p>We walk the space together, talk through how you live, and listen for how you want each room to feel.</p>
+        <ul class="shop-grid list-reset">
+          <li class="shop-card">
+            <div class="shop-thumb" aria-hidden="true"><span>Coming soon</span></div>
+            <p class="shop-cat">Lighting</p>
+            <p class="shop-title">[Product name]</p>
+            <p class="shop-meta">[Retailer] · [Link]</p>
           </li>
-          <li class="home-step">
-            <span class="home-step-num" aria-hidden="true">02</span>
-            <h3>Concept</h3>
-            <p>A design direction for the room: mood, palette, materials and layout, shared so you can see it before anything is ordered.</p>
+          <li class="shop-card">
+            <div class="shop-thumb" aria-hidden="true"><span>Coming soon</span></div>
+            <p class="shop-cat">Textiles</p>
+            <p class="shop-title">[Product name]</p>
+            <p class="shop-meta">[Retailer] · [Link]</p>
           </li>
-          <li class="home-step">
-            <span class="home-step-num" aria-hidden="true">03</span>
-            <h3>Design &amp; sourcing</h3>
-            <p>The detailed plan: furniture, finishes, lighting, fabrics and decor, with every selection specified and sourced.</p>
+          <li class="shop-card">
+            <div class="shop-thumb" aria-hidden="true"><span>Coming soon</span></div>
+            <p class="shop-cat">Decor</p>
+            <p class="shop-title">[Product name]</p>
+            <p class="shop-meta">[Retailer] · [Link]</p>
           </li>
-          <li class="home-step">
-            <span class="home-step-num" aria-hidden="true">04</span>
-            <h3>Install &amp; style</h3>
-            <p>Installation day brings it all together: furniture placed, art hung, and every shelf styled so the room feels finished.</p>
+          <li class="shop-card">
+            <div class="shop-thumb" aria-hidden="true"><span>Coming soon</span></div>
+            <p class="shop-cat">Furniture</p>
+            <p class="shop-title">[Product name]</p>
+            <p class="shop-meta">[Retailer] · [Link]</p>
           </li>
-        </ol>
+        </ul>
       </div>
     </section>
 
-    <!-- ===================== Inquiry form ===================== -->
-    <section id="consult" class="section consult" aria-labelledby="consult-title">
+    <!-- ===================== Journal (placeholders only) ===================== -->
+    <section id="journal" class="section home-journal" aria-labelledby="journal-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">From the journal</p>
+          <h2 id="journal-title">Design tips &amp; stories.</h2>
+          <p>Paint colors, styling tricks and the stories behind each room. The first posts are on their way.</p>
+        </div>
+        <ul class="journal-grid list-reset">
+          <li class="journal-card">
+            <picture>
+              <source type="image/webp" srcset="assets/images/gallery/office-sd-1-card-480.webp 480w, assets/images/gallery/office-sd-1-card-960.webp 960w" sizes="(min-width: 1100px) 380px, (min-width: 720px) calc(33vw - 2rem), calc(100vw - 2.5rem)">
+              <img src="assets/images/gallery/office-sd-1-card-480.jpg" srcset="assets/images/gallery/office-sd-1-card-480.jpg 480w, assets/images/gallery/office-sd-1-card-960.jpg 960w" sizes="(min-width: 1100px) 380px, (min-width: 720px) calc(33vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async" alt="Home office color-drenched in deep navy on the walls and ceiling, with a natural maple desk, a brass sputnik chandelier, and a cream studded accent chair">
+            </picture>
+            <p class="journal-meta"><span class="journal-tag">Coming soon</span> Color</p>
+            <h3 class="journal-title">[Post idea: How I pick a paint color for a full color drench]</h3>
+          </li>
+          <li class="journal-card">
+            <picture>
+              <source type="image/webp" srcset="assets/images/gallery/living-nc-1-card-480.webp 480w, assets/images/gallery/living-nc-1-card-960.webp 960w" sizes="(min-width: 1100px) 380px, (min-width: 720px) calc(33vw - 2rem), calc(100vw - 2.5rem)">
+              <img src="assets/images/gallery/living-nc-1-card-480.jpg" srcset="assets/images/gallery/living-nc-1-card-480.jpg 480w, assets/images/gallery/living-nc-1-card-960.jpg 960w" sizes="(min-width: 1100px) 380px, (min-width: 720px) calc(33vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async" alt="Living room fireplace wall with a greenery-dressed wood beam mantel, an arched mirror, and open white shelves styled with vases, plants and a woven tray">
+            </picture>
+            <p class="journal-meta"><span class="journal-tag">Coming soon</span> Styling</p>
+            <h3 class="journal-title">[Post idea: Styling open shelves without the clutter]</h3>
+          </li>
+          <li class="journal-card">
+            <picture>
+              <source type="image/webp" srcset="assets/images/gallery/pantry-ks-1-card-480.webp 480w, assets/images/gallery/pantry-ks-1-card-960.webp 960w" sizes="(min-width: 1100px) 380px, (min-width: 720px) calc(33vw - 2rem), calc(100vw - 2.5rem)">
+              <img src="assets/images/gallery/pantry-ks-1-card-480.jpg" srcset="assets/images/gallery/pantry-ks-1-card-480.jpg 480w, assets/images/gallery/pantry-ks-1-card-960.jpg 960w" sizes="(min-width: 1100px) 380px, (min-width: 720px) calc(33vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async" alt="Walk-in pantry in deep blue-gray with fluted cabinet doors, brass pulls, open corner shelves, and a counter lit by under-cabinet lighting">
+            </picture>
+            <p class="journal-meta"><span class="journal-tag">Coming soon</span> Organizing</p>
+            <h3 class="journal-title">[Post idea: A pantry that stays pretty and organized]</h3>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== Follow along + newsletter ===================== -->
+    <section id="follow" class="section home-follow" aria-labelledby="follow-title">
+      <div class="container home-follow-grid">
+        <div>
+          <p class="eyebrow">Follow along</p>
+          <h2 id="follow-title">Let's be friends.</h2>
+          <p class="home-follow-lede">Come hang out for room reveals, everyday home moments and whatever I'm dreaming up next.</p>
+          <ul class="follow-links list-reset">
+            <li><a class="follow-link" href="https://www.instagram.com/foxandfable.design/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg><span>Instagram <span class="follow-handle">@foxandfable.design</span></span><span class="visually-hidden"> (opens in a new tab)</span></a></li>
+            <li><a class="follow-link" href="#" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 8.5c3-1 5 .8 4.5 3.2-.4 2-2.4 3-3.8 2.2M12 10.5 9.8 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Pinterest <span class="follow-handle">[@handle]</span></span><span class="visually-hidden"> (placeholder link)</span></a></li>
+            <li><a class="follow-link" href="#" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5M14 4c.4 2.6 2.2 4.3 5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>TikTok <span class="follow-handle">[@handle]</span></span><span class="visually-hidden"> (placeholder link)</span></a></li>
+          </ul>
+        </div>
+        <div id="newsletter" class="newsletter">
+          <h3>Get the good stuff in your inbox.</h3>
+          <p>Room reveals, favorite finds and seasonal ideas from <span class="newsletter-name">[Newsletter name]</span>.</p>
+          <!-- Mock-up only: no action/method, the CSP sets form-action 'none', and main.js blocks submit. Nothing is sent. -->
+          <form class="newsletter-form" id="newsletter-form" novalidate>
+            <div class="newsletter-row">
+              <label class="visually-hidden" for="nl-email">Email address</label>
+              <input id="nl-email" name="nl-email" type="email" maxlength="254" inputmode="email" autocomplete="email" placeholder="Your email address" required aria-describedby="nl-status">
+              <button class="btn btn-primary" type="submit">Sign Me Up</button>
+            </div>
+            <p class="newsletter-status" id="nl-status" role="status" aria-live="polite"></p>
+            <p class="newsletter-note"><strong>Preview only:</strong> signing up isn't live yet, so nothing is sent or saved.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Work with me ===================== -->
+    <section id="work" class="section consult" aria-labelledby="work-title">
       <div class="container split split-form">
         <div class="consult-intro">
-          <p class="eyebrow">Start a project</p>
-          <h2 id="consult-title">Let's talk about your home.</h2>
-          <p>Tell us a little about your space and what you're hoping for, and we'll be in touch to set up a design consultation, in your home or virtually.</p>
-          <p class="mockup-note" role="note"><strong>Preview only:</strong> this form checks your entries in your browser, but nothing is sent or uploaded, and any files you choose stay on your device. To start a project, email <a href="mailto:hello@foxandfable.com">hello@foxandfable.com</a>.</p>
+          <p class="eyebrow">Work with me</p>
+          <h2 id="work-title">Let's create something together.</h2>
+          <p>I'd love to hear about brand collaborations, sponsored content, design consultations and press requests. Or just say hi!</p>
+          <p class="placeholder-line">[Media kit: coming soon]</p>
+          <p class="mockup-note" role="note"><strong>Preview only:</strong> this form checks your entries in your browser, but nothing is sent. To get in touch, email <a href="mailto:hello@foxandfable.com">hello@foxandfable.com</a>.</p>
         </div>
 
-        <!-- Mock-up only: no action/method, the CSP sets form-action 'none', and main.js blocks submit. Nothing is ever sent or uploaded. -->
+        <!-- Mock-up only: no action/method, the CSP sets form-action 'none', and main.js blocks submit. Nothing is ever sent. -->
         <form class="consult-form" id="consult-form" novalidate>
           <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
 
           <div class="field-grid">
             <div class="field">
-              <label for="name">Full name <span class="req" aria-hidden="true">*</span></label>
+              <label for="name">Your name <span class="req" aria-hidden="true">*</span></label>
               <input id="name" name="name" type="text" maxlength="80" autocomplete="name" required aria-describedby="name-error">
               <p class="field-error" id="name-error"></p>
             </div>
@@ -273,87 +296,27 @@
               <p class="field-error" id="email-error"></p>
             </div>
             <div class="field">
-              <label for="phone">Phone <span class="optional">(optional)</span></label>
-              <input id="phone" name="phone" type="tel" maxlength="20" pattern="[0-9+()\-. ]{7,20}" inputmode="tel" autocomplete="tel" aria-describedby="phone-error">
-              <p class="field-error" id="phone-error"></p>
-            </div>
-            <div class="field">
-              <label for="city">City <span class="req" aria-hidden="true">*</span></label>
-              <input id="city" name="city" type="text" maxlength="60" autocomplete="address-level2" placeholder="e.g. Salt Lake City" required aria-describedby="city-error">
-              <p class="field-error" id="city-error"></p>
-            </div>
-            <div class="field">
-              <label for="room">Room type <span class="req" aria-hidden="true">*</span></label>
-              <select id="room" name="room" required aria-describedby="room-error">
-                <option value="">Choose a room</option>
-                <option>Living room or great room</option>
-                <option>Kitchen or pantry</option>
-                <option>Primary bedroom</option>
-                <option>Guest bedroom</option>
-                <option>Kids' room, nursery or playroom</option>
-                <option>Home office or flex room</option>
-                <option>Entry, mudroom or laundry</option>
-                <option>Closet or dressing room</option>
-                <option>Basement or bonus room</option>
-                <option>Several rooms or whole home</option>
-                <option>Other</option>
-              </select>
-              <p class="field-error" id="room-error"></p>
-            </div>
-            <div class="field">
-              <label for="project">Project type <span class="req" aria-hidden="true">*</span></label>
-              <select id="project" name="project" required aria-describedby="project-error">
-                <option value="">Choose a project</option>
-                <option>Full-service interior design</option>
-                <option>Room refresh &amp; styling</option>
+              <label for="reason">What's this about? <span class="req" aria-hidden="true">*</span></label>
+              <select id="reason" name="reason" required aria-describedby="reason-error">
+                <option value="">Choose one</option>
+                <option>Brand collaboration</option>
+                <option>Sponsored content</option>
                 <option>Design consultation</option>
-                <option>Cabinetry or accent wall design</option>
-                <option>Other</option>
-                <option>Not sure yet</option>
+                <option>Press / media</option>
+                <option>Just saying hi</option>
               </select>
-              <p class="field-error" id="project-error"></p>
+              <p class="field-error" id="reason-error"></p>
             </div>
             <div class="field">
-              <label for="scope">Project scope <span class="req" aria-hidden="true">*</span></label>
-              <select id="scope" name="scope" required aria-describedby="scope-error">
-                <option value="">Choose a scope</option>
-                <option>One room</option>
-                <option>A few rooms</option>
-                <option>Whole home</option>
-                <option>Not sure yet</option>
-              </select>
-              <p class="field-error" id="scope-error"></p>
-            </div>
-            <div class="field">
-              <label for="timeline">Ideal timeline <span class="req" aria-hidden="true">*</span></label>
-              <select id="timeline" name="timeline" required aria-describedby="timeline-error">
-                <option value="">Choose a timeline</option>
-                <option>As soon as possible</option>
-                <option>In 2–3 months</option>
-                <option>In 3–6 months</option>
-                <option>Just exploring</option>
-              </select>
-              <p class="field-error" id="timeline-error"></p>
+              <label for="company">Brand or company <span class="optional">(optional)</span></label>
+              <input id="company" name="company" type="text" maxlength="80" autocomplete="organization" aria-describedby="company-error">
+              <p class="field-error" id="company-error"></p>
             </div>
             <div class="field field-full">
-              <label for="message">Tell us about your space <span class="optional">(optional)</span></label>
-              <textarea id="message" name="message" rows="4" maxlength="2000" aria-describedby="message-count message-error" placeholder="How do you want the room to feel, how do you use it, and what does it look like today?"></textarea>
+              <label for="message">Message <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" rows="5" maxlength="2000" required aria-describedby="message-count message-error" placeholder="Tell me a little about what you have in mind."></textarea>
               <p class="field-error" id="message-error"></p>
               <p class="field-hint" id="message-count">0 / 2000 characters</p>
-            </div>
-            <div class="field field-full field-upload">
-              <label for="files">Share your space <span class="optional">(optional)</span></label>
-              <p class="field-help" id="files-help">Photos of the room as it is today, rough measurements or a floor plan, and any inspiration images or pins you love. Anything that helps us picture your home.</p>
-              <div class="upload-zone">
-                <svg class="upload-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M8 34v6h32v-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 30V8m-8 8 8-8 8 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <p class="upload-title"><span class="upload-cta">Choose files</span> or drag them here</p>
-                <p class="upload-limits" id="files-limits">JPG, PNG, HEIC, WebP or PDF · up to 10 files, 10 MB each</p>
-                <input id="files" type="file" multiple
-                       accept="image/jpeg,image/png,image/webp,image/heic,image/heif,application/pdf,.jpg,.jpeg,.png,.webp,.heic,.heif,.pdf"
-                       aria-describedby="files-help files-limits files-error">
-              </div>
-              <p class="field-error" id="files-error"></p>
-              <ul class="file-list list-reset" id="files-list" hidden></ul>
             </div>
           </div>
 
@@ -363,7 +326,7 @@
             <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
           </div>
 
-          <button class="btn btn-primary btn-block" type="submit">Send Inquiry</button>
+          <button class="btn btn-primary btn-block" type="submit">Send Message</button>
           <p class="form-fineprint"><span class="req" aria-hidden="true">*</span> Required field</p>
         </form>
       </div>
@@ -377,21 +340,22 @@
         <a href="#top" class="footer-logo-link">
           <picture><source type="image/webp" srcset="assets/logo/horizontal-light-360.webp 360w, assets/logo/horizontal-light-720.webp 720w" sizes="(min-width: 400px) 340px, calc(100vw - 2.5rem)"><img class="footer-logo" src="assets/logo/horizontal-light-360.png" srcset="assets/logo/horizontal-light-360.png 360w, assets/logo/horizontal-light-720.png 720w" sizes="(min-width: 400px) 340px, calc(100vw - 2.5rem)" width="360" height="91" alt="Fox &amp; Fable"></picture>
         </a>
-        <p class="footer-tagline">Interior Design</p>
-        <p>Warm, layered, livable interiors in the Greater Salt&nbsp;Lake Area,&nbsp;Utah.</p>
+        <p class="footer-tagline">Home &amp; Lifestyle</p>
+        <p>Home, design &amp; everyday living with Jessica, from the Greater Salt&nbsp;Lake Area,&nbsp;Utah.</p>
       </div>
       <nav class="footer-nav" aria-label="Footer">
         <p class="footer-heading">Explore</p>
         <ul class="list-reset">
-          <li><a href="#services">Services</a></li>
-          <li><a href="gallery.html">Portfolio</a></li>
-          <li><a href="#process">Process</a></li>
+          <li><a href="#top">Home</a></li>
+          <li><a href="gallery.html">Room Tours</a></li>
+          <li><a href="#shop">Shop</a></li>
+          <li><a href="#journal">Journal</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="#consult">Start a Project</a></li>
+          <li><a href="#work">Work With Me</a></li>
         </ul>
       </nav>
       <div>
-        <p class="footer-heading">Visit &amp; contact</p>
+        <p class="footer-heading">Say hello</p>
         <address class="footer-contact">
           Greater Salt&nbsp;Lake Area,&nbsp;Utah<br>
           <a href="mailto:hello@foxandfable.com">hello@foxandfable.com</a> <span class="placeholder-inline">(placeholder)</span>
@@ -402,6 +366,9 @@
           </a></li>
           <li><a href="#" rel="noopener noreferrer" aria-label="Fox &amp; Fable on Pinterest (placeholder link)">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 8.5c3-1 5 .8 4.5 3.2-.4 2-2.4 3-3.8 2.2M12 10.5 9.8 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </a></li>
+          <li><a href="#" rel="noopener noreferrer" aria-label="Fox &amp; Fable on TikTok (placeholder link)">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5M14 4c.4 2.6 2.2 4.3 5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a></li>
         </ul>
       </div>

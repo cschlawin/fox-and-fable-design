@@ -3,7 +3,7 @@
  * Vanilla JS, no dependencies. Loaded from 'self' only (see CSP).
  *  1. Progressive-enhancement flag (.no-js → .js)
  *  2. Mobile navigation toggle
- *  3. Consultation form: client-side validation + "preview only" note (mock-up: never submits, never uploads)
+ *  3. "Work with me" form + newsletter sign-up: client-side validation + "preview only" note (mock-up: never submits)
  *  4. Gallery: category filters + accessible <dialog> lightbox
  *
  * Security notes:
@@ -20,6 +20,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     initNav();
     initForm();
+    initNewsletter();
     initGallery();
     var year = document.getElementById("year");
     if (year) year.textContent = String(new Date().getFullYear());
@@ -57,9 +58,8 @@
     });
   }
 
-  // 3. Consultation form -------------------------------------------------------
+  // 3. "Work with me" form + newsletter -----------------------------------------
   var EMAIL_RE = /^[^\s@<>()[\]\\,;:"]+@[^\s@<>()[\]\\,;:"]+\.[A-Za-z]{2,}$/;
-  var PHONE_RE = /^[0-9+().\-\s]{7,20}$/;
   // Strip control characters (except newline/tab in the message) and trim.
   function clean(value, allowNewlines) {
     var re = allowNewlines ? /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g : /[\u0000-\u001F\u007F]/g;
@@ -67,17 +67,12 @@
   }
 
   var RULES = {
-    name:     { required: "Please tell us your name.", max: 80 },
-    email:    { required: "Please add an email so we can reply.", max: 254,
+    name:     { required: "Please tell me your name.", max: 80 },
+    email:    { required: "Please add an email so I can reply.", max: 254,
                 test: function (v) { return EMAIL_RE.test(v); }, invalid: "That email doesn't look quite right. Try name@example.com." },
-    phone:    { max: 20, test: function (v) { return v === "" || (PHONE_RE.test(v) && v.replace(/\D/g, "").length >= 7); },
-                invalid: "Please use digits, spaces, or + ( ) - only, at least 7 digits." },
-    city:     { required: "Which city is the project in?", max: 60 },
-    room:     { required: "Please choose a room type." },
-    project:  { required: "Please choose a project type." },
-    scope:    { required: "Please choose a project scope." },
-    timeline: { required: "Please choose a timeline." },
-    message:  { max: 2000, multiline: true }
+    reason:   { required: "Please choose what this is about." },
+    company:  { max: 80 },
+    message:  { required: "Please add a short message.", max: 2000, multiline: true }
   };
 
   function initForm() {
@@ -102,8 +97,6 @@
       if (e.target.getAttribute("aria-invalid") === "true") validateField(form, e.target.name);
     });
 
-    var files = initUpload(form);
-
     form.addEventListener("submit", function (e) {
       e.preventDefault(); // Mock-up: nothing is ever sent or uploaded (the CSP also sets form-action 'none').
 
@@ -121,10 +114,6 @@
           if (!firstInvalid) firstInvalid = form.elements[name];
         }
       });
-      if (files && !files.validate()) {
-        errors++;
-        if (!firstInvalid) firstInvalid = files.input;
-      }
 
       status.className = "form-status";
       status.replaceChildren();
@@ -144,12 +133,11 @@
       var heading = document.createElement("strong");
       heading.textContent = "Thank you, " + firstName + ".";
       var body = document.createElement("span");
-      body.append("This form is a preview, and nothing was sent" + (files && files.count() ? " or uploaded" : "") +
-        ". Please email us at ");
+      body.append("This form is a preview, and nothing was sent. Please email me at ");
       var mail = document.createElement("a");
       mail.href = "mailto:hello@foxandfable.com";
       mail.textContent = "hello@foxandfable.com";
-      body.append(mail, " to start a project.");
+      body.append(mail, " to get in touch.");
       status.classList.add("is-success");
       status.append(heading, body);
       status.setAttribute("tabindex", "-1");
@@ -157,104 +145,27 @@
     });
   }
 
-  // "Share your space" upload (mock-up). Only the names, sizes and types of the chosen files are looked at
-  // to list them; files are never read, uploaded or sent anywhere (the input has no name attribute).
-  var UPLOAD = {
-    maxFiles: 10,
-    maxBytes: 10 * 1024 * 1024,
-    exts: ["jpg", "jpeg", "png", "webp", "heic", "heif", "pdf"]
-  };
-  function formatSize(bytes) {
-    return bytes >= 1048576 ? (bytes / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(bytes / 1024)) + " KB";
-  }
-  function initUpload(form) {
-    var input = document.getElementById("files");
-    var list = document.getElementById("files-list");
-    var error = document.getElementById("files-error");
-    if (!input || !list || !error) return null;
-    var zone = input.closest(".upload-zone");
-    var selected = [];
-    var canEdit = typeof DataTransfer === "function";
-    try { if (canEdit) new DataTransfer(); } catch (err) { canEdit = false; }
-
-    function setError(msg) {
-      error.textContent = msg;
-      if (msg) { input.setAttribute("aria-invalid", "true"); zone.classList.add("is-invalid"); }
-      else { input.removeAttribute("aria-invalid"); zone.classList.remove("is-invalid"); }
-    }
-    function sync() {
-      if (!canEdit) return;
-      var dt = new DataTransfer();
-      selected.forEach(function (f) { dt.items.add(f); });
-      input.files = dt.files;
-    }
-    function render() {
-      list.replaceChildren();
-      selected.forEach(function (f, i) {
-        var li = document.createElement("li");
-        var name = document.createElement("span");
-        name.className = "file-name";
-        name.textContent = f.name;
-        name.title = f.name;
-        var size = document.createElement("span");
-        size.className = "file-size";
-        size.textContent = formatSize(f.size);
-        li.append(name, size);
-        if (canEdit) {
-          var btn = document.createElement("button");
-          btn.type = "button";
-          btn.className = "file-remove";
-          btn.textContent = "Remove";
-          btn.setAttribute("aria-label", "Remove " + f.name);
-          btn.addEventListener("click", function () {
-            selected.splice(i, 1);
-            sync(); render(); setError("");
-            input.focus();
-          });
-          li.append(btn);
-        }
-        list.append(li);
-      });
-      list.hidden = selected.length === 0;
-    }
-    function ok(f) {
-      var ext = (f.name.split(".").pop() || "").toLowerCase();
-      return UPLOAD.exts.indexOf(ext) !== -1;
-    }
-
-    input.addEventListener("change", function () {
-      var incoming = Array.prototype.slice.call(input.files || []);
-      var notes = [];
-      var base = canEdit ? selected.slice() : [];
-      incoming.forEach(function (f) {
-        if (!ok(f)) { notes.push(f.name + " isn't a JPG, PNG, HEIC, WebP or PDF."); return; }
-        if (f.size > UPLOAD.maxBytes) { notes.push(f.name + " is " + formatSize(f.size) + "; please keep each file under 10 MB."); return; }
-        var dup = base.some(function (g) { return g.name === f.name && g.size === f.size && g.lastModified === f.lastModified; });
-        if (dup) return;
-        if (base.length >= UPLOAD.maxFiles) { notes.push("You can share up to " + UPLOAD.maxFiles + " files, so some were left out."); return; }
-        base.push(f);
-      });
-      selected = base;
-      sync(); render();
-      // Keep only the first "up to 10" note.
-      setError(notes.filter(function (n, i) { return notes.indexOf(n) === i; }).join(" "));
-    });
-
-    ["dragenter", "dragover"].forEach(function (t) { input.addEventListener(t, function () { zone.classList.add("is-dragover"); }); });
-    ["dragleave", "drop"].forEach(function (t) { input.addEventListener(t, function () { zone.classList.remove("is-dragover"); }); });
-
-    return {
-      input: input,
-      count: function () { return selected.length; },
-      validate: function () {
-        var bad = selected.filter(function (f) { return !ok(f) || f.size > UPLOAD.maxBytes; });
-        if (bad.length || selected.length > UPLOAD.maxFiles) {
-          setError("Please remove files that aren't images or PDFs, are over 10 MB, or go past the 10-file limit.");
-          return false;
-        }
-        return true;
+  // Newsletter sign-up (mock-up): checks the email locally and explains that nothing was sent.
+  function initNewsletter() {
+    var form = document.getElementById("newsletter-form");
+    if (!form) return;
+    var input = form.elements["nl-email"];
+    var status = document.getElementById("nl-status");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Mock-up: nothing is ever sent (the CSP also sets form-action 'none').
+      var value = clean(input.value);
+      status.className = "newsletter-status";
+      if (!EMAIL_RE.test(value) || value.length > 254) {
+        input.setAttribute("aria-invalid", "true");
+        status.classList.add("is-error");
+        status.textContent = "Please enter a valid email, like name@example.com.";
+        input.focus();
+        return;
       }
-    };
+      input.removeAttribute("aria-invalid");
+      status.classList.add("is-success");
+      status.textContent = "Thanks! This sign-up is a preview, so you weren't added to a list and nothing was sent.";
+    });
   }
 
   function validateField(form, name) {
@@ -306,7 +217,7 @@
           item.hidden = !match;
           if (match) shown++;
         });
-        if (status) status.textContent = "Showing " + shown + " of " + items.length + " projects (" + btn.textContent + ").";
+        if (status) status.textContent = "Showing " + shown + " of " + items.length + " rooms (" + btn.textContent + ").";
       });
     });
 

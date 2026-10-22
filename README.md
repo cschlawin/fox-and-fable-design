@@ -3,20 +3,20 @@
 > This repository is a copy of the Fox & Fable site, the starting point for an interior-design-focused version.
 > It is a separate mock-up; the original site lives in `cschlawin/fox-and-fable`.
 
-A hand-coded, responsive three-page site for **Fox & Fable, LLC**, Jessica's interior design studio in the
-Greater Salt Lake Area, Utah. The site uses finished-room photography to showcase her design work: palette,
-materials, layering, and how a room feels. *Warm. Layered. Unmistakably yours.*
+A hand-coded, responsive three-page site for **Fox & Fable**, Jessica's home and lifestyle brand from the
+Greater Salt Lake Area, Utah: room tours, favorite finds, design tips and everyday home moments, in her own voice.
+*Come on in, make yourself at home.*
 
-> **Status:** design mockup / portfolio project. Jessica's role line and some about-page prompts are placeholders,
-> the contact email is a placeholder, and the inquiry form validates in the browser but does not send anything.
+> **Status:** design mockup. The shop, journal, newsletter, Pinterest/TikTok handles, media kit and contact email are
+> placeholders, and the "Work with me" and newsletter forms validate in the browser but do not send anything.
 
 ## Pages
 
 | Page | What's on it |
 |---|---|
-| `index.html` | Interior design studio home page: hero (finished primary bedroom), intro, services (full-service design, refreshes & styling, consultations, cabinetry & accent wall design), four featured portfolio rooms, design approach, four-step process (Consult, Concept, Design & sourcing, Install & style), inquiry form (preview only) |
-| `about.html` | Jessica's designer section (real photo and intro bio; role line is a placeholder), three family photos (winter and snow portraits plus a summer landscape), design approach values, inquiry CTA |
-| `gallery.html` | Finished-room portfolio: three self-hosted finished-room videos (color-drenched pantry walkthrough, pale blue walk-in closet reveal, his & hers closet) and fifteen photo projects. Sets show finished photos, "Design" renderings where they exist, and "Before" photos. Category filters (All / Closets & Storage / Bedrooms / Living Spaces / Offices & Flex Rooms / Laundry Rooms / Pantries / Playrooms) and an accessible `<dialog>` lightbox |
+| `index.html` | Hello from Jessica (hero), a little about me, room tours (four featured rooms), Shop my home (placeholder cards), journal (placeholder post ideas), follow along + newsletter sign-up (preview only), Work with me contact form (preview only) |
+| `about.html` | Jessica's intro and bio (supplied text), three family photos, what she shares, Work with me CTA |
+| `gallery.html` | Room tours: three self-hosted finished-room videos (color-drenched pantry walkthrough, pale blue walk-in closet reveal, his & hers closet) and fifteen photo projects. Sets show finished photos, "Design" renderings where they exist, and "Before" photos. Category filters (All / Closets & Storage / Bedrooms / Living Spaces / Offices & Flex Rooms / Laundry Rooms / Pantries / Playrooms) and an accessible `<dialog>` lightbox |
 
 ## Features
 
@@ -33,7 +33,7 @@ materials, layering, and how a room feels. *Warm. Layered. Unmistakably yours.*
   logo script restores that line, so re-apply the edit afterwards.
 - **Shared header and footer** on every page, with `aria-current="page"` on the active link.
 - **Mobile navigation** with an accessible toggle (`aria-expanded`; it closes on link click, on Escape, and on resize).
-- **Client-side form validation** with friendly inline messages, a live character counter, and a success state.
+- **Client-side form validation** (Work with me form and newsletter) with friendly inline messages, a live character counter, and a preview-only success state.
 - **Gallery filters and lightbox.** Progressive enhancement: without JS, every project shows and each link opens the full image.
 - **Self-hosted project videos** (WebM/VP9 + MP4/H.264) that play inline with native controls. Nothing autoplays, and `preload="none"` means no video bytes load until the visitor presses play.
 - **SEO**: a per-page title and description, canonical URLs, Open Graph and Twitter tags, `robots.txt`, and `sitemap.xml`.
@@ -56,7 +56,7 @@ site/
 │   └── images/
 │       ├── placeholders/     # landscape / portrait / square placeholder art
 │       ├── about/            # Jessica's portrait (jessica.*) and family photos (family.*, family-snow.*, family-summer.*)
-│       ├── home/             # Home page crops of finished gallery photos
+│       ├── home/             # Home page hero crops
 │       └── gallery/          # video posters + project photos
 ├── tools/build-logo-assets.py # Rebuilds every logo/icon asset from the original (needs: pip install pillow numpy scipy)
 ├── docs/                     # brand-reference/ holds the logo artwork and brand sheet (plus previous logos)
@@ -260,7 +260,7 @@ for name signs or decals, house numbers, readable family photos, and faces.
 | **Zero third-party requests.** Fonts are self-hosted and there are no CDNs, analytics, or trackers. Any future external resource must use Subresource Integrity + `crossorigin` | `assets/fonts/` |
 | **Security headers**: `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy` (camera, microphone, geolocation… off), `Strict-Transport-Security`, COOP/CORP | `_headers` |
 | **Safe DOM updates.** User input and captions are written with `textContent`, never `innerHTML`. The lightbox only loads same-origin image URLs | `js/main.js` |
-| **Form hardening**: `maxlength` on every field, email/tel types and patterns, trimming and control-character stripping, a hidden honeypot | `index.html`, `js/main.js` |
+| **Form hardening**: `maxlength` on every field, email types and patterns, trimming and control-character stripping, a hidden honeypot | `index.html`, `js/main.js` |
 | **`rel="noopener noreferrer"`** on outbound links | all pages |
 | **Repo hygiene and privacy**: `.gitignore` blocks `.env*`, keys, and OS files. No secrets are committed. Photo and video metadata (EXIF, QuickTime GPS, device, and dates) is stripped | `.gitignore`, `assets/images/`, `assets/video/` |
 | **Disclosure policy** | `SECURITY.md` |
@@ -269,7 +269,7 @@ for name signs or decals, house numbers, readable family photos, and faces.
 headers**, so there the `<meta>` CSP and referrer policy are the fallback (`frame-ancestors` and `X-Frame-Options`
 don't work from a meta tag). Enable **Enforce HTTPS**, or put the site behind Cloudflare for full header support.
 
-**The consultation form is a mock-up on purpose.** It has no `action`, the CSP sets `form-action 'none'`, `main.js` blocks submit and only shows a "preview, nothing was sent" note, and the "Share your space" upload only lists the chosen file names locally (the file input has no `name`, and files are never read or uploaded). No fetch/XHR is made.
+**The forms are mock-ups on purpose.** Neither the "Work with me" form nor the newsletter sign-up has an `action`, the CSP sets `form-action 'none'`, and `main.js` blocks submit and only shows a "preview, nothing was sent" note. No fetch/XHR is made.
 
 **Client-side validation is not security.** A real submission must go through a backend or form service (Formspree,
 Netlify Forms, or a serverless function) with **server-side validation and sanitization, rate limiting, and spam protection**
@@ -286,7 +286,7 @@ Netlify Forms, or a serverless function) with **server-side validation and sanit
 ## Roadmap
 
 - More finished-room photography (responsive `srcset`, AVIF/WebP).
-- After the mock-up / business-design phase, decide whether and how the form should deliver submissions and uploads (it intentionally sends nothing today).
+- After the mock-up / business-design phase, decide whether and how the forms should deliver messages and newsletter sign-ups (they intentionally send nothing today).
 - Individual project case-study pages linked from the gallery.
 - WebVTT captions for the videos, and privacy policy and terms pages.
 - `LocalBusiness` structured data (JSON-LD in an external file), plus Lighthouse and axe checks in CI.
