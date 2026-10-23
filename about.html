@@ -9,16 +9,16 @@
        frame-ancestors cannot be set via <meta>; it is sent as an HTTP header in _headers. -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>About Jessica | Fox &amp; Fable</title>
-  <meta name="description" content="Meet Jessica, the wife and mom of three behind Fox &amp; Fable, sharing her home room by room from the greater Salt Lake City area.">
+  <title>Meet the Designer | Fox &amp; Fable</title>
+  <meta name="description" content="Meet Jessica, designer &amp; founder of Fox &amp; Fable: a wife and mom of three transforming her home along the Wasatch Mountains, room by room.">
   <meta name="theme-color" content="#2B2A28">
   <link rel="canonical" href="https://www.foxandfable.com/about.html">
 
   <!-- Open Graph / social preview (domain is a placeholder) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Fox &amp; Fable">
-  <meta property="og:title" content="About Jessica | Fox &amp; Fable">
-  <meta property="og:description" content="Meet Jessica and the home behind Fox &amp; Fable.">
+  <meta property="og:title" content="Meet the Designer | Fox &amp; Fable">
+  <meta property="og:description" content="Meet Jessica, the designer &amp; founder behind Fox &amp; Fable.">
   <meta property="og:url" content="https://www.foxandfable.com/about.html">
   <meta property="og:image" content="https://www.foxandfable.com/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -35,9 +35,9 @@
 
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=17">
+  <link rel="stylesheet" href="css/styles.css?v=18">
   <!-- Loaded (not deferred) so it can swap .no-js → .js before first paint; DOM work waits for DOMContentLoaded. -->
-  <script src="js/main.js?v=17"></script>
+  <script src="js/main.js?v=18"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -70,47 +70,57 @@
 
   <main id="main" tabindex="-1">
 
-    <!-- ===================== Page hero ===================== -->
-    <section class="page-hero" aria-labelledby="about-title">
-      <div class="container">
-        <p class="eyebrow">About</p>
-        <h1 id="about-title">Welcome to Fox &amp; Fable</h1>
-        <p class="lede">The story behind Fox &amp; Fable, and the home that started it all.</p>
+    <!-- ===================== Meet the Designer =====================
+         Recreates Cody's "Meet the Designer" graphic in HTML/CSS. Bio text is verbatim from that graphic. -->
+    <section class="meet" aria-labelledby="meet-title">
+      <!-- Decorative watermarks: FF + fox monogram from our original logo art (tools/build-about-logo.py);
+           fox line sketch copied from Cody's graphic (tools/extract-meet-fox.py) -->
+      <img class="meet-mark meet-mark-tr" src="assets/logo/monogram-watermark-560.webp" width="453" height="560" alt="" aria-hidden="true" decoding="async">
+      <picture class="meet-mark meet-mark-bl" aria-hidden="true"><source srcset="assets/images/about/meet-fox-sketch.webp" type="image/webp"><img src="assets/images/about/meet-fox-sketch.png" width="260" height="489" alt="" decoding="async" loading="lazy"></picture>
+      <div class="container meet-grid">
+        <header class="meet-head">
+          <picture>
+            <source type="image/webp" srcset="assets/logo/lockup-descriptor-400.webp 400w, assets/logo/lockup-descriptor-800.webp 800w" sizes="(min-width: 720px) 300px, 240px">
+            <img class="meet-logo" src="assets/logo/lockup-descriptor-400.png" srcset="assets/logo/lockup-descriptor-400.png 400w, assets/logo/lockup-descriptor-800.png 800w" sizes="(min-width: 720px) 300px, 240px" width="400" height="276" alt="Fox &amp; Fable, Design + Construction">
+          </picture>
+          <h1 id="meet-title" class="meet-title"><span class="meet-kicker">Meet the</span> <span class="meet-script">Designer</span></h1>
+        </header>
+
+        <div class="meet-aside">
+          <figure class="meet-photo">
+            <picture>
+              <source srcset="assets/images/about/jessica.webp" type="image/webp">
+              <img src="assets/images/about/jessica.jpg" width="456" height="570" decoding="async" fetchpriority="high" alt="Jessica smiling outdoors in a cream coat, with snowy mountains behind her">
+            </picture>
+          </figure>
+          <p class="meet-sign"><span class="meet-sign-name">Jessica</span> <span class="meet-sign-role">Designer &amp; Founder · Fox &amp; Fable</span></p>
+        </div>
+
+        <div class="meet-body">
+          <p>Hi, I’m Jessica! I’m a wife, mom of three, and the designer behind Fox &amp; Fable.</p>
+          <p>In 2023, we moved into our builder-grade home nestled along the Wasatch Mountains. I fell in love with the location and views, but I knew I wanted to add character and make the space feel more intentional and uniquely ours.</p>
+          <p>Since then we have been transforming our home room by room, with plenty more projects still to come. Did I mention my husband, Cody, is the talent behind my ideas — the one who somehow turns all of my “what if we…” ideas into reality.</p>
+          <p>Through Fox &amp; Fable, I get to combine my passion for design with our love for building, creating custom spaces that feel elevated, intentional, and built for real life — from indoor playhouses and bunk rooms to full home renovations.</p>
+          <p>I’ve shared glimpses of our projects over the years, but I’m excited to finally share more of the process, inspiration, and finished spaces here.</p>
+          <p>Thanks for following along!</p>
+
+          <!-- hidden 2026-10-20 on request; remove hidden from the three h3/p pairs below to restore -->
+          <h3 hidden>Why I love interior design</h3>
+          <p class="prompt" hidden>[In her own words: what she loves about interior design, and the moment or project that made her want to do this work.]</p>
+
+          <h3 hidden>My design philosophy</h3>
+          <p class="prompt" hidden>[How she approaches a room: palette, favorite materials, layering, and how she wants a finished room to feel.]</p>
+
+          <h3 hidden>Favorite projects &amp; inspirations</h3>
+          <p class="prompt" hidden>[Designers, books, places, or past projects that inspire her. Only real projects and influences; leave this out until there's something to share.]</p>
+        </div>
+
       </div>
     </section>
 
-    <!-- ===================== Jessica ===================== -->
-    <section class="section founders" aria-label="Meet Jessica">
+    <!-- ===================== Family ===================== -->
+    <div class="section family-band">
       <div class="container">
-
-        <!-- Jessica: photo and intro bio are real (bio text supplied verbatim); the descriptor line and the hidden prompts below are placeholders -->
-        <article class="founder" aria-labelledby="jessica-title">
-          <figure class="photo ratio-portrait">
-            <picture>
-              <source srcset="assets/images/about/jessica.webp" type="image/webp">
-              <img src="assets/images/about/jessica.jpg" width="456" height="570" decoding="async" alt="Jessica smiling outdoors in the snow, with the mountains behind her">
-            </picture>
-          </figure>
-          <div>
-            <p class="founder-role">[Creator descriptor, e.g. Home &amp; lifestyle creator]</p>
-            <h2 id="jessica-title">Meet Jessica</h2>
-            <p>Hi, I’m Jessica! I’m a wife, mom of three, living in the greater Salt Lake City area.</p>
-            <p>In 2023, we moved into our builder-grade home nestled along the Wasatch Mountains. I fell in love with the location and views, but I knew I wanted to add character and make the space feel more intentional and uniquely ours.</p>
-            <p>Since then we have been transforming our home room by room, with plenty more projects still to come. Did I mention my husband Cody is the talent behind my ideas, and the one who somehow turns all of my “what if we…” ideas into reality.</p>
-            <p>I’ve shared glimpses of our renovations over the years, but I’m excited to finally share more of the process, inspiration, and finished spaces here.</p>
-            <p>Thanks for following along.</p>
-
-            <!-- hidden 2026-10-20 on request; remove hidden from the three h3/p pairs below to restore -->
-            <h3 hidden>Why I love interior design</h3>
-            <p class="prompt" hidden>[In her own words: what she loves about interior design, and the moment or project that made her want to do this work.]</p>
-
-            <h3 hidden>My design philosophy</h3>
-            <p class="prompt" hidden>[How she approaches a room: palette, favorite materials, layering, and how she wants a finished room to feel.]</p>
-
-            <h3 hidden>Favorite projects &amp; inspirations</h3>
-            <p class="prompt" hidden>[Designers, books, places, or past projects that inspire her. Only real projects and influences; leave this out until there's something to share.]</p>
-          </div>
-        </article>
 
         <!-- Family photos -->
         <section class="family" aria-labelledby="family-title">
@@ -141,7 +151,7 @@
           </div>
         </section>
       </div>
-    </section>
+    </div>
 
     <!-- ===================== What I share ===================== -->
     <section class="section story-band" aria-labelledby="story-title">

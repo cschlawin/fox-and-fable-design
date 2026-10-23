@@ -15,7 +15,7 @@ Greater Salt Lake Area, Utah: room tours, favorite finds, design tips and everyd
 | Page | What's on it |
 |---|---|
 | `index.html` | Hello from Jessica (hero), a little about me, room tours (four featured rooms), Shop my home (placeholder cards), journal (placeholder post ideas), follow along + newsletter sign-up (preview only), Work with me contact form (preview only) |
-| `about.html` | Jessica's intro and bio (supplied text), three family photos, what she shares, Work with me CTA |
+| `about.html` | "Meet the Designer" (HTML/CSS version of Cody's graphic: framed portrait, logo with Design + Construction, verbatim bio, signature), three family photos, what she shares, Work with me CTA |
 | `gallery.html` | Room tours: three self-hosted finished-room videos (color-drenched pantry walkthrough, pale blue walk-in closet reveal, his & hers closet) and fifteen photo projects. Sets show finished photos, "Design" renderings where they exist, and "Before" photos. Category filters (All / Closets & Storage / Bedrooms / Living Spaces / Offices & Flex Rooms / Laundry Rooms / Pantries / Playrooms) and an accessible `<dialog>` lightbox |
 
 ## Features
@@ -31,6 +31,12 @@ Greater Salt Lake Area, Utah: room tours, favorite finds, design tips and everyd
   `docs/brand-reference/previous-*`. In this interior design version, the footer lockup (`horizontal-light-*`) and
   `og-image.png` were edited by hand to drop the logo's "Design + Construction" descriptor line; re-running the
   logo script restores that line, so re-apply the edit afterwards.
+- **About page "Meet the Designer" art.** That section deliberately keeps the full logo *with* "Design + Construction"
+  (`assets/logo/lockup-descriptor-400/800`) plus a faded FF-and-fox monogram watermark (`monogram-watermark-560.webp`);
+  both come from the original artwork via `tools/build-about-logo.py`, which leaves the other logo files alone. The faint
+  fox line sketch (`assets/images/about/meet-fox-sketch`) has no source file of its own, so it was copied from Cody's
+  "Meet the Designer" graphic with `tools/extract-meet-fox.py` (the graphic is not stored in the repo). Script headings
+  use *Allison* (SIL OFL, self-hosted).
 - **Shared header and footer** on every page, with `aria-current="page"` on the active link.
 - **Mobile navigation** with an accessible toggle (`aria-expanded`; it closes on link click, on Escape, and on resize).
 - **Client-side form validation** (Work with me form and newsletter) with friendly inline messages, a live character counter, and a preview-only success state.
@@ -51,7 +57,7 @@ site/
 ├── assets/
 │   ├── logo/                 # Generated logo assets (full lockup, footer horizontal lockup, nav monogram), WebP + PNG
 │   ├── favicon.ico, favicon-32.png, apple-touch-icon.png, icon-192.png, icon-512.png, og-image.png
-│   ├── fonts/                # Self-hosted Cormorant Garamond + Inter (woff2) + OFL licenses
+│   ├── fonts/                # Self-hosted Cormorant Garamond, Inter + Allison script (woff2) + OFL licenses
 │   ├── video/                # Self-hosted MP4 (H.264/AAC) + WebM (VP9/Opus) pairs, metadata stripped
 │   └── images/
 │       ├── placeholders/     # landscape / portrait / square placeholder art
@@ -59,6 +65,8 @@ site/
 │       ├── home/             # Home page hero crops
 │       └── gallery/          # video posters + project photos
 ├── tools/build-logo-assets.py # Rebuilds every logo/icon asset from the original (needs: pip install pillow numpy scipy)
+├── tools/build-about-logo.py  # About-page lockup (with descriptor) + monogram watermark only
+├── tools/extract-meet-fox.py  # About-page fox sketch, cut from the Meet the Designer graphic
 ├── docs/                     # brand-reference/ holds the logo artwork and brand sheet (plus previous logos)
 ├── _headers, robots.txt, sitemap.xml, site.webmanifest
 └── README.md, SECURITY.md, LICENSE

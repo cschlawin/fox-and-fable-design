@@ -43,6 +43,14 @@
   font-display: swap;
   src: url("../assets/fonts/inter-latin.woff2") format("woff2");
 }
+/* Allison (SIL OFL 1.1, assets/fonts/OFL-Allison.txt): script accents on the About page only. */
+@font-face {
+  font-family: "Allison";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/allison-latin.woff2") format("woff2");
+}
 
 /* 2. Design tokens -------------------------------------------------------- */
 :root {
@@ -301,11 +309,6 @@ main:focus { outline: none; }
 /* "Share your space" upload: the native file input covers the whole zone, so click, tap and drag-and-drop all work (also with JS off). */
 
 /* 11. About page --------------------------------------------------------- */
-.founder { display: grid; gap: var(--space-5); align-items: start; }
-.founder + .founder { margin-top: var(--space-7); }
-.founder h2 { margin-bottom: var(--space-2); }
-.founder-role { font-size: 0.78rem; font-weight: 600; letter-spacing: var(--track-caps); text-transform: uppercase; color: var(--c-oak-deep); }
-.founder h3 { font-size: 1.5rem; margin-top: var(--space-5); }
 /* Fill-in prompts: obviously unfinished copy to replace */
 .prompt {
   margin-top: var(--space-2); padding: var(--space-3) var(--space-4);
@@ -399,7 +402,6 @@ main:focus { outline: none; }
   .field-full { grid-column: 1 / -1; }
   .consult-form { padding: var(--space-6) var(--space-5); }
   .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; align-items: start; }
-  .founder { grid-template-columns: minmax(240px, 0.8fr) 1.2fr; gap: var(--space-6); }
 
 }
 
@@ -593,3 +595,52 @@ main:focus { outline: none; }
   .home-follow-grid { grid-template-columns: 1fr 1fr; gap: var(--space-7); }
 }
 .home-about { background: var(--c-paper); }
+
+/* 21. About: Meet the Designer -------------------------------------------- */
+/* HTML/CSS take on the "Meet the Designer" graphic: framed portrait + signature left, logo, heading
+   and bio right; stacked on mobile. The faded monogram is decorative (CSS background only). */
+.meet { position: relative; overflow: hidden; padding-block: var(--space-6) var(--space-7); background: var(--c-paper); }
+.meet-mark { position: absolute; z-index: 0; height: auto; pointer-events: none; user-select: none; opacity: 0.06; }
+.meet-mark-tr { top: -1.5rem; right: -3.5rem; width: 190px; }
+.meet-mark-bl { display: none; }
+.meet-mark-bl img { display: block; width: 100%; height: auto; }
+.meet-grid > * { position: relative; z-index: 1; }
+.meet-grid {
+  position: relative; display: grid; gap: var(--space-5); grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "head" "aside" "body";
+}
+.meet-head { grid-area: head; text-align: center; }
+.meet-logo { display: block; width: 240px; height: auto; margin: 0 auto; }
+.meet-title { margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid rgb(138 90 46 / 0.35); display: inline-flex; flex-direction: column; align-items: center; line-height: 1; font-weight: 400; }
+.meet-kicker { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 500; letter-spacing: 0.35em; margin-right: -0.35em; text-transform: uppercase; color: var(--c-ink); }
+.meet-script { font-family: "Allison", var(--font-serif); font-size: clamp(4.5rem, 18vw, 7.5rem); font-weight: 400; line-height: 0.95; color: var(--c-oak-deep); }
+.meet-title::after { content: ""; display: block; width: 6rem; height: 1px; margin-top: var(--space-3); background: rgb(138 90 46 / 0.45); }
+.meet-aside { grid-area: aside; display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+.meet-photo { margin: 0; width: min(100%, 420px); padding: 10px; border: 1px solid rgb(138 90 46 / 0.4); background: var(--c-paper); }
+.meet-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.meet-sign { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.meet-sign-name { font-family: "Allison", var(--font-serif); font-size: 5rem; line-height: 1; color: var(--c-oak-deep); }
+.meet-sign-role { margin-top: var(--space-1); padding-top: var(--space-2); border-top: 1px solid rgb(138 90 46 / 0.45); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--c-ink); }
+.meet-body { grid-area: body; max-width: 36rem; justify-self: center; }
+.meet-body p { font-family: var(--font-serif); font-size: 1.2rem; line-height: 1.55; color: var(--c-ink); }
+.meet-body p + p { margin-top: var(--space-3); }
+.meet-body h3 { font-size: 1.5rem; margin-top: var(--space-5); }
+.family-band .family { margin-top: 0; }
+
+@media (min-width: 720px) {
+  .meet-logo { width: 300px; }
+  .meet-mark-tr { width: 300px; right: -4rem; opacity: 0.07; }
+}
+@media (min-width: 1100px) {
+  .meet { padding-block: var(--space-7); }
+  .meet-grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); column-gap: var(--space-7); row-gap: var(--space-4);
+    grid-template-areas: "aside head" "aside body"; align-items: start;
+  }
+  .meet-aside { align-items: flex-end; }
+  .meet-mark-tr { top: -2rem; right: -3rem; width: 280px; opacity: 0.1; }
+  .meet-mark-bl { display: block; left: 0; bottom: 0; width: 180px; opacity: 0.4; }
+  .meet-photo { width: 100%; max-width: 460px; }
+  .meet-sign { width: 100%; max-width: 460px; align-items: flex-start; text-align: left; padding-left: var(--space-4); }
+  .meet-body { justify-self: start; }
+}
