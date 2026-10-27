@@ -31,12 +31,3 @@ yarn-error.log*
 # --- Build output ---
 dist/
 build/
-
-# --- Jekyll (local preview) ---
-_site/
-.jekyll-cache/
-.jekyll-metadata
-.sass-cache/
-.bundle/
-vendor/
-Gemfile.lock
