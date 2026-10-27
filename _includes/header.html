@@ -1,0 +1,27 @@
+{%- assign r = page.root -%}
+{%- if page.nav == "home" -%}{%- assign home = "#top" -%}{%- assign hp = "" -%}{%- else -%}{%- assign home = r | append: "index.html" -%}{%- assign hp = r | append: "index.html" -%}{%- endif -%}
+  <!-- ===================== Header / Navigation (shared across pages) ===================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="{{ home }}" aria-label="Fox &amp; Fable home">
+        <picture><source type="image/webp" srcset="{{ r }}assets/logo/monogram-52.webp 1x, {{ r }}assets/logo/monogram-104.webp 2x, {{ r }}assets/logo/monogram-156.webp 3x"><img class="brand-mark" src="{{ r }}assets/logo/monogram-52.png" srcset="{{ r }}assets/logo/monogram-52.png 1x, {{ r }}assets/logo/monogram-104.png 2x, {{ r }}assets/logo/monogram-156.png 3x" width="42" height="52" alt=""></picture>
+        <span class="brand-word">Fox <span class="brand-amp">&amp;</span> Fable</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+
+      <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="{{ home }}"{% if page.nav == "home" %} aria-current="page"{% endif %}>Home</a></li>
+          <li><a href="{{ r }}gallery.html"{% if page.nav == "room_tours" %} aria-current="page"{% endif %}>Room Tours</a></li>
+          <li><a href="{{ hp }}#shop">Shop</a></li>
+          <li><a href="{{ hp }}#journal">Journal</a></li>
+          <li><a href="{{ r }}about.html"{% if page.nav == "about" %} aria-current="page"{% endif %}>About</a></li>
+          <li class="nav-cta-item"><a class="btn btn-primary btn-sm" href="{{ hp }}#work">Work With Me</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>

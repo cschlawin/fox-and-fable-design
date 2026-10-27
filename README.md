@@ -10,6 +10,66 @@ Greater Salt Lake Area, Utah: room tours, favorite finds, design tips and everyd
 > **Status:** design mockup. The shop, journal, newsletter, Pinterest/TikTok handles, media kit and contact email are
 > placeholders, and the "Work with me" and newsletter forms validate in the browser but do not send anything.
 
+## Editing and building (Pages CMS + Jekyll)
+
+> Branch `cms-editable`. The site is now a small **Jekyll** site so Jessica can edit it in
+> **[Pages CMS](https://pagescms.org)** (free, open source). Her plain-English guide is
+> [`docs/EDITING-GUIDE.md`](docs/EDITING-GUIDE.md). Everything here uses free features only: Pages CMS, GitHub
+> Actions and GitHub Pages. No paid services, no secrets.
+
+**Where the content lives**
+
+| What | File | Edited in Pages CMS as |
+|---|---|---|
+| Home page text, buttons, featured rooms, form choices | `_data/home.yml` | Home page |
+| Room Tours filters, videos, photo tours (+ extra photos) | `_data/room_tours.yml` | Room tours |
+| Shop cards | `_data/shop.yml` | Shop |
+| Journal posts (one Markdown file each) | `_journal/*.md` | Journal posts |
+| About page story, family captions, "What I share" | `_data/about.yml` | About page |
+| Instagram / Pinterest / TikTok … | `_data/social.yml` | Social links |
+| Work-with-me band (About + Room Tours) | `_data/call_to_action.yml` | Work-with-me band |
+| Footer text and contact email | `_data/settings.yml` | Footer & contact |
+| Page titles, descriptions, share text | `_data/seo.yml` | Page titles & share text |
+| Uploaded photos / videos | `uploads/`, `uploads/videos/` | Media |
+| Photo sizes (generated, don't edit) | `_data/image_sizes.yml` | (hidden) |
+
+The editor itself is configured in `.pages.yml`. Templates are in `_layouts/` and `_includes/`; `index.html`,
+`gallery.html` and `about.html` are now Liquid templates that read the files above. The rendered HTML is the same as
+the hand-coded version.
+
+**Not editable in the CMS (on purpose):** the `<head>` (CSP, `noindex`), page structure and nav, the logo and About
+page watermark art, icons, the About family photos (fixed in `about.html` with their blur), the contact form's labels
+and validation messages (`js/main.js`), the lightbox, and new filter categories (add the key to the `room_type`
+select in `.pages.yml` and a filter in `_data/room_tours.yml`).
+
+**Build model.** One workflow, `.github/workflows/site.yml`, on every push to `main`:
+
+1. **media** (`contents: write`): `tools/media/process_uploads.py` processes new or changed photos in `uploads/`.
+   It applies the phone's rotation, **strips all EXIF/GPS/XMP metadata**, converts to **sRGB**, caps the long edge
+   at **2000 px**, converts HEIC to JPEG (and updates references), and writes a `.webp` copy plus
+   `-card-480`/`-card-960` thumbnails. It refreshes `_data/image_sizes.yml`, then commits back with the built-in
+   `GITHUB_TOKEN` (no secrets). A commit made with `GITHUB_TOKEN` does not start another run, so there is no loop.
+   `uploads/.processed.json` records what was already done.
+2. **build** (`contents: read`): `actions/jekyll-build-pages` (the same `github-pages` gem as GitHub's classic build),
+   then a check that every page still has `noindex` and `form-action 'none'`.
+3. **deploy** (`pages: write`, `id-token: write`): `actions/deploy-pages`.
+
+Pushes to other branches only run the build, as a check. This needs **Settings → Pages → Source: GitHub Actions**.
+The classic "Deploy from a branch" mode can't be used, because GitHub doesn't rebuild Pages for commits pushed with
+`GITHUB_TOKEN`, so processed photos would never go live.
+
+**Build locally** (same gem versions as the Action):
+
+```bash
+gem install bundler
+bundle install                       # once (add BUNDLE_PATH=vendor/bundle to keep gems in the repo folder; it's git-ignored)
+bundle exec jekyll serve             # http://localhost:4000, rebuilds on save
+bundle exec jekyll build             # writes _site/
+pip install pillow pillow-heif && python3 tools/media/process_uploads.py   # optional: same photo step as the Action
+```
+
+`README.md`, `SECURITY.md`, `LICENSE`, `docs/`, `tools/`, `Gemfile` and `.pages.yml` are excluded from the published site.
+
 ## Pages
 
 | Page | What's on it |
@@ -47,7 +107,8 @@ Greater Salt Lake Area, Utah: room tours, favorite finds, design tips and everyd
 
 ## Tech stack
 
-Plain **HTML5, CSS3, and vanilla JavaScript**. No frameworks, build step, or runtime dependencies.
+Plain **HTML5, CSS3, and vanilla JavaScript**, assembled by **Jekyll** (GitHub Pages' built-in generator) from the
+content files in `_data/` and `_journal/`. No frameworks or runtime dependencies; the browser gets static files.
 
 ```
 site/
@@ -113,12 +174,17 @@ site/
 ## Run locally
 
 ```bash
-cd site
-python3 -m http.server 8000      # then open http://localhost:8000
-npx html-validate index.html about.html gallery.html   # optional HTML check
+bundle exec jekyll serve          # then open http://localhost:4000 (see "Editing and building" above)
+npx html-validate _site/*.html _site/journal/*.html   # optional HTML check, after a build
 ```
 
 ## Adding photos
+
+> **Since the move to Jekyll, the easy way is Pages CMS** (see [`docs/EDITING-GUIDE.md`](docs/EDITING-GUIDE.md)).
+> Photos uploaded there are cleaned up automatically. The notes below are the by-hand method. The HTML snippets
+> show what the templates output: add a project by editing `_data/room_tours.yml` rather than `gallery.html`, and
+> run `python3 tools/media/process_uploads.py --sizes-only` after adding files under `assets/images/` so their
+> `width`/`height` are known.
 
 ### Privacy first: strip metadata
 
@@ -254,10 +320,11 @@ for name signs or decals, house numbers, readable family photos, and faces.
    git remote add origin https://github.com/<your-username>/fox-and-fable-design.git
    git push -u origin main
    ```
-2. On GitHub, open **Settings → Pages → Build and deployment**, choose **Deploy from a branch**, then `main` and `/ (root)`, and **Save**.
+2. On GitHub, open **Settings → Pages → Build and deployment** and set **Source** to **GitHub Actions**
+   (the workflow in `.github/workflows/site.yml` builds and publishes on every push to `main`).
 3. Check **Enforce HTTPS**.
 4. The site goes live at `https://<your-username>.github.io/fox-and-fable-design/`.
-5. Before launch, update the `canonical`, `og:url`, and `og:image` URLs in all three pages, plus `robots.txt` and `sitemap.xml`, to the real domain.
+5. Before launch, set `canonical_base` in `_config.yml` (used for `canonical`, `og:url` and `og:image`), plus `robots.txt` and `sitemap.xml`, to the real domain.
 
 ## Security
 
@@ -286,7 +353,8 @@ Netlify Forms, or a serverless function) with **server-side validation and sanit
 
 ## Maintenance notes
 
-- The header and footer are repeated in each page, because this is a no-build static site. When you change one, change all three.
+- The header and footer are shared Jekyll includes (`_includes/header.html`, `_includes/footer.html`). After changing
+  `css/styles.css` or `js/main.js`, bump `asset_version` in `_config.yml` so browsers fetch the new file.
 - To change the logo, replace the files in `docs/brand-reference/` and run `python3 tools/build-logo-assets.py`
   (adjust the crop boxes at the top of the script if the layout changed). The old badge generator `tools/build-logo.py`
   and its SVGs were retired in the October 2026 rebrand.

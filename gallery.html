@@ -1,80 +1,16 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Mock-up phase: keep out of search results. Remove at launch. -->
-  <meta name="robots" content="noindex, nofollow">
-  <!-- Security: strict CSP. Everything (scripts, styles, fonts, images) is self-hosted.
-       frame-ancestors cannot be set via <meta>; it is sent as an HTTP header in _headers. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Room Tours | Fox &amp; Fable</title>
-  <meta name="description" content="Room tours from Jessica at Fox &amp; Fable: closets, bedrooms, living spaces, home offices, laundry rooms, pantries and playrooms.">
-  <meta name="theme-color" content="#2B2A28">
-  <link rel="canonical" href="https://www.foxandfable.com/gallery.html">
-
-  <!-- Open Graph / social preview (domain is a placeholder) -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Fox &amp; Fable">
-  <meta property="og:title" content="Room Tours | Fox &amp; Fable">
-  <meta property="og:description" content="Come on in: room tours from color-drenched offices to cozy, layered bedrooms.">
-  <meta property="og:url" content="https://www.foxandfable.com/gallery.html">
-  <meta property="og:image" content="https://www.foxandfable.com/assets/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Fox &amp; Fable logo: an FF monogram with an engraved fox seated in front of it, above the name.">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.foxandfable.com/assets/og-image.png">
-  <meta name="twitter:image:alt" content="Fox &amp; Fable logo: an FF monogram with an engraved fox seated in front of it, above the name.">
-
-  <link rel="icon" href="assets/favicon.ico" sizes="16x16 32x32 48x48">
-  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="manifest" href="site.webmanifest">
-
-  <link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=18">
-  <!-- Loaded (not deferred) so it can swap .no-js → .js before first paint; DOM work waits for DOMContentLoaded. -->
-  <script src="js/main.js?v=18"></script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to main content</a>
-
-  <!-- ===================== Header / Navigation (shared across pages) ===================== -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Fox &amp; Fable home">
-        <picture><source type="image/webp" srcset="assets/logo/monogram-52.webp 1x, assets/logo/monogram-104.webp 2x, assets/logo/monogram-156.webp 3x"><img class="brand-mark" src="assets/logo/monogram-52.png" srcset="assets/logo/monogram-52.png 1x, assets/logo/monogram-104.png 2x, assets/logo/monogram-156.png 3x" width="42" height="52" alt=""></picture>
-        <span class="brand-word">Fox <span class="brand-amp">&amp;</span> Fable</span>
-      </a>
-
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
-        <span class="nav-toggle-bars" aria-hidden="true"></span>
-        <span class="visually-hidden">Menu</span>
-      </button>
-
-      <nav id="primary-nav" class="primary-nav" aria-label="Primary">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="gallery.html" aria-current="page">Room Tours</a></li>
-          <li><a href="index.html#shop">Shop</a></li>
-          <li><a href="index.html#journal">Journal</a></li>
-          <li><a href="about.html">About</a></li>
-          <li class="nav-cta-item"><a class="btn btn-primary btn-sm" href="index.html#work">Work With Me</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main" tabindex="-1">
-
+---
+layout: default
+nav: room_tours
+seo: room_tours
+lightbox: true
+---
+{%- assign g = site.data.room_tours -%}
+{%- assign tile_sizes = "(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" %}
     <section class="page-hero" aria-labelledby="gallery-title">
       <div class="container">
-        <p class="eyebrow">Room tours</p>
-        <h1 id="gallery-title">Come on in.</h1>
-        <p class="lede">Pull up a chair and take a look around. From moody color drenches to cozy, layered bedrooms, open any room to see every photo, including the before.</p>
+        <p class="eyebrow">{{ g.eyebrow | escape }}</p>
+        <h1 id="gallery-title">{{ g.heading | escape }}</h1>
+        <p class="lede">{{ g.intro | escape }}</p>
       </div>
     </section>
 
@@ -83,449 +19,56 @@
         <!-- Filters: revealed by JS (hidden for .no-js, where every project simply shows) -->
         <div class="filter-bar" role="group" aria-label="Filter room tours by type">
           <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All</button>
-          <button class="filter-btn" type="button" data-filter="closets" aria-pressed="false">Closets &amp; Storage</button>
-          <button class="filter-btn" type="button" data-filter="bedrooms" aria-pressed="false">Bedrooms</button>
-          <button class="filter-btn" type="button" data-filter="living-spaces" aria-pressed="false">Living Spaces</button>
-          <button class="filter-btn" type="button" data-filter="offices" aria-pressed="false">Offices &amp; Flex Rooms</button>
-          <button class="filter-btn" type="button" data-filter="laundry" aria-pressed="false">Laundry Rooms</button>
-          <button class="filter-btn" type="button" data-filter="pantries" aria-pressed="false">Pantries</button>
-          <button class="filter-btn" type="button" data-filter="playrooms" aria-pressed="false">Playrooms</button>
+          {%- for f in g.filters %}
+          <button class="filter-btn" type="button" data-filter="{{ f.key | escape }}" aria-pressed="false">{{ f.label | escape }}</button>
+          {%- endfor %}
         </div>
         <p class="gallery-status" id="gallery-status" role="status" aria-live="polite"></p>
 
         <div class="gallery-grid" id="gallery-grid">
-          <!-- Video item: color-drenched pantry walkthrough (self-hosted; plays inline, not in the lightbox).
-               Captions: add <track kind="captions" src="assets/video/custom-pantry.en.vtt" srclang="en" label="English"> when a .vtt exists. -->
-          <figure class="gallery-item photo ratio-reel video-item" data-category="pantries">
-            <video class="gallery-video" controls preload="none" playsinline width="608" height="1080"
-                   poster="assets/images/gallery/pantry-poster.webp"
-                   aria-label="Video: walkthrough of a blue-gray color-drenched pantry">
-              <source src="assets/video/custom-pantry.webm" type="video/webm">
-              <source src="assets/video/custom-pantry.mp4" type="video/mp4">
-              <p>Your browser doesn't support embedded video. <a href="assets/video/custom-pantry.mp4">Download the pantry video (MP4)</a>.</p>
+          {%- for v in g.videos %}
+          {%- include resolve-image.html src=v.video %}
+          {%- assign vbase = img_b -%}{%- assign vkey = img_base -%}
+          {%- capture k %}|/{{ vkey }}.webm|{% endcapture %}
+          {%- include resolve-image.html src=v.poster %}
+          <!-- Video tile. Captions: add a <track kind="captions"> when a .vtt file exists. -->
+          <figure class="gallery-item photo ratio-reel video-item" data-category="{{ v.room_type | escape }}">
+            <video class="gallery-video" controls preload="none" playsinline width="{{ v.width | default: 608 }}" height="{{ v.height | default: 1080 }}"
+                   poster="{{ img_url }}"
+                   aria-label="Video: {{ v.video_description | escape }}">
+              {%- if all_files contains k %}
+              <source src="{{ page.root }}{{ vbase }}.webm" type="video/webm">
+              {%- endif %}
+              <source src="{{ page.root }}{{ vbase }}.mp4" type="video/mp4">
+              <p>Your browser doesn't support embedded video. <a href="{{ page.root }}{{ vbase }}.mp4">Download the {{ v.download_name | default: "room" | escape }} video (MP4)</a>.</p>
             </video>
-            <figcaption><span class="gallery-cat">Pantry</span> <span class="gallery-meta">Kitchen pantry · Color drench walkthrough video · Greater Salt&nbsp;Lake Area,&nbsp;UT</span></figcaption>
+            <figcaption><span class="gallery-cat">{{ v.label | escape }}</span> <span class="gallery-meta">{{ v.caption | escape }}{% if v.location.size > 0 %} · {% include location.html text=v.location %}{% endif %}</span></figcaption>
           </figure>
-          <!-- Video item: walk-in closet reveal (empty closet, then the finished room).
-               Captions: add <track kind="captions" src="assets/video/closet-reveal.en.vtt" srclang="en" label="English"> when a .vtt exists. -->
-          <figure class="gallery-item photo ratio-reel video-item" data-category="closets">
-            <video class="gallery-video" controls preload="none" playsinline width="608" height="1080"
-                   poster="assets/images/gallery/closet-reveal-poster.webp"
-                   aria-label="Video: reveal of a pale blue walk-in closet with a vanity">
-              <source src="assets/video/closet-reveal.webm" type="video/webm">
-              <source src="assets/video/closet-reveal.mp4" type="video/mp4">
-              <p>Your browser doesn't support embedded video. <a href="assets/video/closet-reveal.mp4">Download the closet video (MP4)</a>.</p>
-            </video>
-            <figcaption><span class="gallery-cat">Closets &amp; Storage</span> <span class="gallery-meta">Closet · Pale blue walk-in closet reveal video · Greater Salt&nbsp;Lake Area,&nbsp;UT</span></figcaption>
-          </figure>
-          <!-- Video item: his & hers closets (finished walk-in). Its before photos now live in the his & hers photo set. -->
-          <figure class="gallery-item photo ratio-reel video-item" data-category="closets">
-            <video class="gallery-video" controls preload="none" playsinline width="608" height="1080"
-                   poster="assets/images/gallery/his-her-closets-poster.webp"
-                   aria-label="Video: his and hers walk-in closet in pale taupe">
-              <source src="assets/video/his-her-closets.webm" type="video/webm">
-              <source src="assets/video/his-her-closets.mp4" type="video/mp4">
-              <p>Your browser doesn't support embedded video. <a href="assets/video/his-her-closets.mp4">Download the closet video (MP4)</a>.</p>
-            </video>
-            <figcaption><span class="gallery-cat">Closets &amp; Storage</span> <span class="gallery-meta">Closet · Pale taupe his &amp; hers closet video · Greater Salt&nbsp;Lake Area,&nbsp;UT</span></figcaption>
-          </figure>
-          <!-- Photo-set item: kitchen pantry (the Color Drench pantry). Cover = finished close-up; the set runs finished → Before.
-               The walkthrough video of the same pantry follows as its own tile. -->
-          <figure class="gallery-item photo ratio-portrait" data-category="pantries">
-            <a class="gallery-link" href="assets/images/gallery/pantry-ks-1.webp" data-width="1320" data-height="1760">
-              <picture>
-                <source type="image/webp" srcset="assets/images/gallery/pantry-ks-1-card-480.webp 480w, assets/images/gallery/pantry-ks-1-card-960.webp 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/pantry-ks-1-card-480.jpg" srcset="assets/images/gallery/pantry-ks-1-card-480.jpg 480w, assets/images/gallery/pantry-ks-1-card-960.jpg 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async"
-                     alt="Finished walk-in kitchen pantry in deep blue-gray: fluted cabinet doors with brass pulls, open corner shelves, a counter with a framed landscape print, a pleated lamp and a spice rack under soft under-cabinet lighting">
-              </picture>
+          {%- endfor %}
+          {%- for t in g.tours %}
+          {%- include resolve-image.html src=t.cover_photo %}
+          {%- assign extra = t.more_photos | size %}
+          <figure class="gallery-item photo ratio-{{ t.tile_shape | default: 'portrait' }}" data-category="{{ t.room_type | escape }}">
+            <a class="gallery-link" href="{{ img_full }}"{% if img_w %} data-width="{{ img_w }}" data-height="{{ img_h }}"{% endif %}>
+              {% include picture.html src=t.cover_photo alt=t.cover_photo_description sizes=tile_sizes attrs='loading="lazy" decoding="async"' %}
             </a>
-            <span class="set-count" aria-hidden="true">4 photos</span>
+            {%- if extra > 0 %}
+            <span class="set-count" aria-hidden="true">{{ extra | plus: 1 }} photos</span>
             <div class="gallery-set" hidden>
-              <a href="assets/images/gallery/pantry-ks-2.webp" data-width="1320" data-height="1760"
-                 data-alt="The finished pantry seen in daylight through the arched doorway from the kitchen, with dark fluted cabinets, a globe ceiling light, and the counter on the left">Photo 2</a>
-              <a href="assets/images/gallery/pantry-ks-3.webp" data-width="1320" data-height="1760"
-                 data-alt="The finished pantry at night through the arched doorway: dim, moody blue-black cabinetry lit by under-cabinet lights along the counter">Photo 3</a>
-              <a href="assets/images/gallery/pantry-ks-before.webp" data-width="1320" data-height="1760" data-label="Before"
-                 data-alt="Before: the original pantry with plain white wire and melamine shelving on every wall">Before</a>
+                            {%- for p in t.more_photos %}
+              {%- include resolve-image.html src=p.photo %}
+              {%- assign kind = p.kind | default: "Photo" -%}
+              {%- if kind == "Photo" %}{% assign n = forloop.index | plus: 1 %}{% assign link_text = "Photo " | append: n %}{% else %}{% assign link_text = kind %}{% endif %}
+              <a href="{{ img_full }}"{% if img_w %} data-width="{{ img_w }}" data-height="{{ img_h }}"{% endif %}{% if kind == "Before" or kind == "Design" %} data-label="{{ kind }}"{% endif %}
+                 data-alt="{{ p.photo_description | escape }}">{{ link_text }}</a>
+              {%- endfor %}
             </div>
-            <figcaption><span class="gallery-cat">Pantry</span> <span class="gallery-meta">Kitchen pantry · Blue-gray color drench &amp; fluted cabinetry · Greater Salt&nbsp;Lake Area,&nbsp;UT</span></figcaption>
+            {%- endif %}
+            <figcaption><span class="gallery-cat">{{ t.label | escape }}</span> <span class="gallery-meta">{{ t.caption | escape }}{% if t.location.size > 0 %} · {% include location.html text=t.location %}{% endif %}</span></figcaption>
           </figure>
-          <!-- Photo-set item: designer walk-in closet (the same closet as the video below). Cover = finished hanging wall; the set runs finished → "Design" renderings → Before.
-               Framed photos of people in photo 4 are blurred (kids are kept off the site). -->
-          <figure class="gallery-item photo ratio-portrait" data-category="closets">
-            <a class="gallery-link" href="assets/images/gallery/closet-ks-1.webp" data-width="1320" data-height="990">
-              <picture>
-                <source type="image/webp" srcset="assets/images/gallery/closet-ks-1-card-480.webp 480w, assets/images/gallery/closet-ks-1-card-960.webp 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/closet-ks-1-card-480.jpg" srcset="assets/images/gallery/closet-ks-1-card-480.jpg 480w, assets/images/gallery/closet-ks-1-card-960.jpg 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async"
-                     alt="Finished walk-in closet with a pale blue hanging wall: clothes on gold rods in three bays, drawer banks with brass knobs, and lit open shelves">
-              </picture>
-            </a>
-            <span class="set-count" aria-hidden="true">7 photos</span>
-            <div class="gallery-set" hidden>
-              <a href="assets/images/gallery/closet-ks-2.webp" data-width="1320" data-height="1760"
-                 data-alt="Looking down the finished walk-in closet: a lit vanity with a mirror and desk chair on the left, hanging clothes on gold rods on the right, a scalloped pink runner, and a window seat at the end">Photo 2</a>
-              <a href="assets/images/gallery/closet-ks-3.webp" data-width="1320" data-height="990"
-                 data-alt="Wide view of the finished closet with the integrated lighting on: three hanging bays with gold rods over drawer banks, open shelves, a window, and the vanity chair in the foreground">Photo 3</a>
-              <a href="assets/images/gallery/closet-ks-4.webp" data-width="1320" data-height="1760"
-                 data-alt="Side view along the finished hanging wall: open lit shelves with framed photos and a plush toy, clothes on gold rods, brass-knob drawers, and an arched mirror at the end">Photo 4</a>
-              <a href="assets/images/gallery/closet-ks-5.webp" data-width="1320" data-height="990" data-label="Design"
-                 data-alt="Design: a 3D computer rendering of the hanging wall, with shelves, hanging bays with gold rods, drawer banks and a corner window seat">Design</a>
-              <a href="assets/images/gallery/closet-ks-6.webp" data-width="1320" data-height="990" data-label="Design"
-                 data-alt="Design: a 3D computer rendering of the vanity wall, with a desk and drawers between open shelving towers under crown molding">Design</a>
-              <a href="assets/images/gallery/closet-ks-before.webp" data-width="1320" data-height="1760" data-label="Before"
-                 data-alt="Before: the empty walk-in closet with bare walls, carpet, and basic wire shelves and rods on both sides">Before</a>
-            </div>
-            <figcaption><span class="gallery-cat">Closets &amp; Storage</span> <span class="gallery-meta">Closet · Pale blue walk-in closet with vanity · Greater Salt&nbsp;Lake Area,&nbsp;UT</span></figcaption>
-          </figure>
-          <!-- Photo-set item: his & hers closet (the same closet as the his & hers video). Cover = finished her side; the set runs finished → Before.
-               The framed family photo on the counter in the cover is blurred (kids are kept off the site). -->
-          <figure class="gallery-item photo ratio-portrait" data-category="closets">
-            <a class="gallery-link" href="assets/images/gallery/hh-closet-1.webp" data-width="1320" data-height="1760">
-              <picture>
-                <source type="image/webp" srcset="assets/images/gallery/hh-closet-1-card-480.webp 480w, assets/images/gallery/hh-closet-1-card-960.webp 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/hh-closet-1-card-480.jpg" srcset="assets/images/gallery/hh-closet-1-card-480.jpg 480w, assets/images/gallery/hh-closet-1-card-960.jpg 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async"
-                     alt="Finished her side of a his and hers closet: pale taupe corner cabinetry with lit hanging bays on gold rods, fabric storage bins on the upper shelves, a drawer dresser with a mirror and flowers on top">
-              </picture>
-            </a>
-            <span class="set-count" aria-hidden="true">6 photos</span>
-            <div class="gallery-set" hidden>
-              <a href="assets/images/gallery/hh-closet-2.webp" data-width="1320" data-height="1760"
-                 data-alt="The finished his side: a wall of pale taupe cabinetry with lit hanging bays of shirts on gold rods, fabric storage bins on the shelves above, and two banks of drawers, beside a floor mirror and a black bench">Photo 2</a>
-              <a href="assets/images/gallery/hh-closet-before-1.webp" data-width="1320" data-height="1760" data-label="Before"
-                 data-alt="Before: the closet straight-on, with white wire shelving and rods wrapping the walls">Before</a>
-              <a href="assets/images/gallery/hh-closet-before-2.webp" data-width="1320" data-height="1760" data-label="Before"
-                 data-alt="Before: an angled view of the wire shelving, with a black bench on the floor">Before</a>
-              <a href="assets/images/gallery/his-her-closets-before-1.webp" data-width="1200" data-height="1600" data-label="Before"
-                 data-alt="Before: the empty walk-in closet with basic wire shelving and rods beside a window">Before</a>
-              <a href="assets/images/gallery/his-her-closets-before-2.webp" data-width="1200" data-height="1600" data-label="Before"
-                 data-alt="Before: the same empty closet looking toward the bathroom doorway, with bare walls and wire rods">Before</a>
-            </div>
-            <figcaption><span class="gallery-cat">Closets &amp; Storage</span> <span class="gallery-meta">Closet · Pale taupe his &amp; hers closet · Greater Salt&nbsp;Lake Area,&nbsp;UT</span></figcaption>
-          </figure>
-          <!-- Photo-set item: Utah playroom. Cover = finished; the lightbox set runs detail → straight-on view → Before. -->
-          <figure class="gallery-item photo ratio-portrait" data-category="playrooms">
-            <a class="gallery-link" href="assets/images/gallery/playroom-slide-1.webp" data-width="1320" data-height="1644">
-              <picture>
-                <source type="image/webp" srcset="assets/images/gallery/playroom-slide-1-card-480.webp 480w, assets/images/gallery/playroom-slide-1-card-960.webp 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/playroom-slide-1-card-480.jpg" srcset="assets/images/gallery/playroom-slide-1-card-480.jpg 480w, assets/images/gallery/playroom-slide-1-card-960.jpg 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async"
-                     alt="Two-story cottage play loft in white shiplap with a paneled front door, window openings, a black lantern sconce, flower boxes, and a slide down one side">
-              </picture>
-            </a>
-            <span class="set-count" aria-hidden="true">4 photos</span>
-            <div class="gallery-set" hidden>
-              <a href="assets/images/gallery/playroom-slide-2.webp" data-width="1320" data-height="1649"
-                 data-alt="Close-up of the play loft's paneled door with black hardware, the lantern sconce, and a flower box of white blooms">Detail</a>
-              <a href="assets/images/gallery/playroom-slide-front.webp" data-width="1320" data-height="1760"
-                 data-alt="Straight-on view of the finished play loft: white shiplap with two upper window openings, flower boxes of white blooms under both lower windows, a black lantern beside the paneled door, and the white slide running down beside a curtained window, on grey carpet">Photo 3</a>
-              <a href="assets/images/gallery/playroom-slide-before.webp" data-width="1200" data-height="1600" data-label="Before"
-                 data-alt="Before: the same room empty, with gray carpet and three windows">Before</a>
-            </div>
-            <figcaption><span class="gallery-cat">Playroom</span> <span class="gallery-meta">Playroom · White shiplap cottage loft with slide · Greater Salt&nbsp;Lake Area,&nbsp;UT</span></figcaption>
-          </figure>
-          <!-- Photo-set item: the cover link opens the lightbox. Extra photos in .gallery-set cycle with ← / → (shown as "1 / 3").
-               Without JS, the cover link opens the cover photo and the extra links stay hidden. -->
-          <figure class="gallery-item photo ratio-landscape" data-category="bedrooms">
-            <a class="gallery-link" href="assets/images/gallery/stone-bedroom-1.webp" data-width="1133" data-height="850">
-              <picture>
-                <source type="image/webp" srcset="assets/images/gallery/stone-bedroom-1-card-480.webp 480w, assets/images/gallery/stone-bedroom-1-card-960.webp 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/stone-bedroom-1-card-480.jpg" srcset="assets/images/gallery/stone-bedroom-1-card-480.jpg 480w, assets/images/gallery/stone-bedroom-1-card-960.jpg 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" width="480" height="360" loading="lazy" decoding="async"
-                     alt="Primary bedroom in daylight: a whitewashed stone accent wall, dark timber ceiling beams, and an iron four-poster canopy bed on a soft patterned rug beside a wall of windows">
-              </picture>
-            </a>
-            <span class="set-count" aria-hidden="true">5 photos</span>
-            <div class="gallery-set" hidden>
-              <a href="assets/images/gallery/stone-bedroom-detail.webp" data-width="1320" data-height="1760"
-                 data-alt="Bedside detail: a dark-wood nightstand with fluted drawer fronts and brass knobs against the whitewashed stone wall, a slim fluted-glass wall sconce, and an olive branch in a white vase beside the canopy bed">Photo 2</a>
-              <a href="assets/images/gallery/stone-bedroom-2.webp" data-width="1320" data-height="864"
-                 data-alt="The same bedroom at dusk: wall sconces lit against the stone wall, the iron canopy bed in warm light, and a blue evening sky through the windows">Photo 3</a>
-              <a href="assets/images/gallery/stone-bedroom-3.webp" data-width="1320" data-height="862"
-                 data-alt="Straight-on view of the iron canopy bed with upholstered headboard and layered neutral bedding in front of the stone accent wall and timber beams">Photo 4</a>
-              <a href="assets/images/gallery/stone-bedroom-before.webp" data-width="1320" data-height="740" data-label="Before"
-                 data-alt="Before: the same bedroom with a plain white wall behind the iron canopy bed, before the stone accent wall and timber beams were added">Before</a>
-            </div>
-            <figcaption><span class="gallery-cat">Bedroom</span> <span class="gallery-meta">Primary bedroom · Whitewashed stone, timber beams &amp; soft neutrals · Greater Salt&nbsp;Lake Area,&nbsp;UT</span></figcaption>
-          </figure>
-          <!-- Photo-set item: Utah picture frame accent wall bedroom. Cover = straight-on twin beds; the set adds an angled view. The nightstand photo frame is blurred in both. -->
-          <figure class="gallery-item photo ratio-portrait" data-category="bedrooms">
-            <a class="gallery-link" href="assets/images/gallery/frame-wall-ut-1.webp" data-width="1320" data-height="1760">
-              <picture>
-                <source type="image/webp" srcset="assets/images/gallery/frame-wall-ut-1-card-480.webp 480w, assets/images/gallery/frame-wall-ut-1-card-960.webp 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/frame-wall-ut-1-card-480.jpg" srcset="assets/images/gallery/frame-wall-ut-1-card-480.jpg 480w, assets/images/gallery/frame-wall-ut-1-card-960.jpg 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async"
-                     alt="Bedroom with a white picture-frame molding accent wall behind two twin beds with brown plaid pillows and dark knit throws, a black nightstand with a ribbed ceramic lamp between them, and cognac leather poufs at the foot of each bed">
-              </picture>
-            </a>
-            <span class="set-count" aria-hidden="true">2 photos</span>
-            <div class="gallery-set" hidden>
-              <a href="assets/images/gallery/frame-wall-ut-2.webp" data-width="1320" data-height="1760"
-                 data-alt="Angled view of the same bedroom: the picture-frame molding wall behind the twin beds and lit lamp, with sheer white curtains framing a window that looks out on a hillside">Photo 2</a>
-            </div>
-            <figcaption><span class="gallery-cat">Bedroom</span> <span class="gallery-meta">Bedroom · Picture-frame molding &amp; cognac accents · Greater Salt&nbsp;Lake Area,&nbsp;UT</span></figcaption>
-          </figure>
-          <!-- Photo-set item: stone fireplace. Cover = finished (dusk); the lightbox set runs wide → straight-on → close-up → Before. -->
-          <figure class="gallery-item photo ratio-portrait" data-category="living-spaces">
-            <a class="gallery-link" href="assets/images/gallery/stone-fireplace-1.webp" data-width="1320" data-height="1760">
-              <picture>
-                <source type="image/webp" srcset="assets/images/gallery/stone-fireplace-1-card-480.webp 480w, assets/images/gallery/stone-fireplace-1-card-960.webp 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/stone-fireplace-1-card-480.jpg" srcset="assets/images/gallery/stone-fireplace-1-card-480.jpg 480w, assets/images/gallery/stone-fireplace-1-card-960.jpg 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async"
-                     alt="Two-story great room with a floor-to-ceiling cream limestone fireplace, a rustic wood beam mantel, a raised stone hearth around a linear fireplace, a candle chandelier, and tall windows looking out over the valley at dusk">
-              </picture>
-            </a>
-            <span class="set-count" aria-hidden="true">5 photos</span>
-            <div class="gallery-set" hidden>
-              <a href="assets/images/gallery/stone-fireplace-2.webp" data-width="1320" data-height="1760"
-                 data-alt="Wide daytime view of the great room: the full-height stone fireplace beside a two-story wall of windows overlooking the valley, with a long sofa, sectional, round black coffee table and candle chandelier">Photo 2</a>
-              <a href="assets/images/gallery/stone-fireplace-3.webp" data-width="1320" data-height="1760"
-                 data-alt="Straight-on view of the floor-to-ceiling cream stone fireplace with a dark wood beam mantel, framed art above the linear fireplace, a raised stone hearth, and a round coffee table in front">Photo 3</a>
-              <a href="assets/images/gallery/stone-fireplace-4.webp" data-width="1320" data-height="1760"
-                 data-alt="Angled close-up of the chunky rough-cut stone, the rustic wood beam mantel, and the wide raised stone hearth below the linear fireplace">Photo 4</a>
-              <a href="assets/images/gallery/stone-fireplace-before.webp" data-width="1320" data-height="1760" data-label="Before"
-                 data-alt="Before: the same great room empty, with a plain white drywall chase, a small floating shelf, and the linear fireplace, before the stone surround">Before</a>
-            </div>
-            <figcaption><span class="gallery-cat">Living Spaces</span> <span class="gallery-meta">Great room · Cream limestone fireplace &amp; beam mantel · Greater Salt&nbsp;Lake Area,&nbsp;UT</span></figcaption>
-          </figure>
-          <!-- Photo-set item: Charlotte-area living room. Cover = finished wall; the set runs shelf close-up → Before. -->
-          <figure class="gallery-item photo ratio-portrait" data-category="living-spaces">
-            <a class="gallery-link" href="assets/images/gallery/living-nc-1.webp" data-width="1320" data-height="990">
-              <picture>
-                <source type="image/webp" srcset="assets/images/gallery/living-nc-1-card-480.webp 480w, assets/images/gallery/living-nc-1-card-960.webp 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/living-nc-1-card-480.jpg" srcset="assets/images/gallery/living-nc-1-card-480.jpg 480w, assets/images/gallery/living-nc-1-card-960.jpg 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async"
-                     alt="Living room fireplace wall with a rustic wood beam mantel dressed in greenery, an arched mirror and candle chandelier above the fireplace, and white cabinetry on each side: a TV niche over cabinets on the left and open shelves over cabinets on the right">
-              </picture>
-            </a>
-            <span class="set-count" aria-hidden="true">3 photos</span>
-            <div class="gallery-set" hidden>
-              <a href="assets/images/gallery/living-nc-2.webp" data-width="1320" data-height="1760"
-                 data-alt="Close-up of the finished right-hand shelving: open white shelves styled with a vase, ceramic houses, plants, framed photos and a woven tray, over two cabinet doors with black pulls">Photo 2</a>
-              <a href="assets/images/gallery/living-nc-before.webp" data-width="1320" data-height="990" data-label="Before"
-                 data-alt="Before: the bare living room wall with two empty drywall niches on either side of the fireplace and no mantel">Before</a>
-            </div>
-            <figcaption><span class="gallery-cat">Living Spaces</span> <span class="gallery-meta">Living room · Styled shelves &amp; a greenery-dressed beam mantel · Greater Charlotte Area,&nbsp;NC</span></figcaption>
-          </figure>
-          <!-- Photo-set item: Aberdeen living room, White Oak Timber Beams. Cover = dusk view of the beams and fireplace; the set runs fireplace wall → sofa and stair wall → two Before photos. Framed photos in photo 3 are blurred. -->
-          <figure class="gallery-item photo ratio-portrait" data-category="living-spaces">
-            <a class="gallery-link" href="assets/images/gallery/living-sd-1.webp" data-width="1320" data-height="1760">
-              <picture>
-                <source type="image/webp" srcset="assets/images/gallery/living-sd-1-card-480.webp 480w, assets/images/gallery/living-sd-1-card-960.webp 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/living-sd-1-card-480.jpg" srcset="assets/images/gallery/living-sd-1-card-480.jpg 480w, assets/images/gallery/living-sd-1-card-960.jpg 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async"
-                     alt="Living room at dusk with white oak timber ceiling beams, a black ring chandelier, and a dark stacked-stone fireplace with a wood beam mantel, stockings, and a flocked Christmas tree beside it">
-              </picture>
-            </a>
-            <span class="set-count" aria-hidden="true">5 photos</span>
-            <div class="gallery-set" hidden>
-              <a href="assets/images/gallery/living-sd-2.webp" data-width="1320" data-height="990"
-                 data-alt="Wide view of the refreshed living room: the stone fireplace and mantel, the flocked tree, the ring chandelier under the white oak timber beams, and a white board-and-batten wall">Photo 2</a>
-              <a href="assets/images/gallery/living-sd-3.webp" data-width="1320" data-height="990"
-                 data-alt="The other side of the room: white oak timber beams and the ring chandelier over the sofa, board-and-batten walls, and a stair railing wrapped in garland below a gallery wall of framed photos">Photo 3</a>
-              <a href="assets/images/gallery/living-sd-before-1.webp" data-width="1320" data-height="990" data-label="Before"
-                 data-alt="Before: the empty living room with a dark tray ceiling, a ceiling fan, beige walls, and the stone fireplace between two windows">Before</a>
-              <a href="assets/images/gallery/living-sd-before-2.webp" data-width="1320" data-height="1760" data-label="Before"
-                 data-alt="Before: the same empty room from another angle, showing the dark tray ceiling and fan above the stone fireplace">Before</a>
-            </div>
-            <figcaption><span class="gallery-cat">Living Spaces</span> <span class="gallery-meta">Living room · White oak beams &amp; warm neutrals · Aberdeen,&nbsp;SD</span></figcaption>
-          </figure>
-          <!-- Photo-set item: Charlotte-area mudroom boot bench. Cover = hallway view; the set adds a lockers close-up. -->
-          <figure class="gallery-item photo ratio-portrait" data-category="closets">
-            <a class="gallery-link" href="assets/images/gallery/boot-bench-nc-hall.webp" data-width="1320" data-height="1760">
-              <picture>
-                <source type="image/webp" srcset="assets/images/gallery/boot-bench-nc-hall-card-480.webp 480w, assets/images/gallery/boot-bench-nc-hall-card-960.webp 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/boot-bench-nc-hall-card-480.jpg" srcset="assets/images/gallery/boot-bench-nc-hall-card-480.jpg 480w, assets/images/gallery/boot-bench-nc-hall-card-960.jpg 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async"
-                     alt="Finished mudroom hallway: a wall of tall white shaker lockers with black pulls and upper cabinets over a bench with storage baskets on the right, a white back door at the end, and a black-and-white patterned runner on light wood floors">
-              </picture>
-            </a>
-            <span class="set-count" aria-hidden="true">2 photos</span>
-            <div class="gallery-set" hidden>
-              <a href="assets/images/gallery/boot-bench-nc-1.webp" data-width="1320" data-height="1760"
-                 data-alt="Mudroom boot bench with tall white shaker locker doors and black pulls, a row of upper cabinets, a bench with woven storage baskets below, and a straw hat on a wall hook">Photo 2</a>
-            </div>
-            <figcaption><span class="gallery-cat">Closets &amp; Storage</span> <span class="gallery-meta">Mudroom · White shaker lockers &amp; woven baskets · Greater Charlotte Area,&nbsp;NC</span></figcaption>
-          </figure>
-          <!-- Photo-set item: Charlotte-area wainscoting accent wall. Cover = wreath detail; the set runs hallway toward the front door → hallway (other way) → foyer. Office shelf frames in the foyer photo are blurred. -->
-          <figure class="gallery-item photo ratio-portrait" data-category="living-spaces">
-            <a class="gallery-link" href="assets/images/gallery/wainscot-nc-4.webp" data-width="1320" data-height="1760">
-              <picture>
-                <source type="image/webp" srcset="assets/images/gallery/wainscot-nc-4-card-480.webp 480w, assets/images/gallery/wainscot-nc-4-card-960.webp 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/wainscot-nc-4-card-480.jpg" srcset="assets/images/gallery/wainscot-nc-4-card-480.jpg 480w, assets/images/gallery/wainscot-nc-4-card-960.jpg 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async"
-                     alt="White raised-panel wainscoting with a chair-rail cap running down a hallway beside a white door hung with a frosted pine wreath, on light oak floors">
-              </picture>
-            </a>
-            <span class="set-count" aria-hidden="true">4 photos</span>
-            <div class="gallery-set" hidden>
-              <a href="assets/images/gallery/wainscot-nc-1.webp" data-width="1320" data-height="1760"
-                 data-alt="Long hallway lined with white raised-panel wainscoting and a chair-rail cap, light oak floors leading to the front door, and a white stair railing with black iron balusters in the foreground">Photo 2</a>
-              <a href="assets/images/gallery/wainscot-nc-2.webp" data-width="1320" data-height="1760"
-                 data-alt="The same wainscoted hallway looking the other way, past a console table and potted plant toward the living room, with a striped runner in the foreground">Photo 3</a>
-              <a href="assets/images/gallery/wainscot-nc-3.webp" data-width="1320" data-height="990"
-                 data-alt="The foyer by the front door, with white wainscoting wrapping the corner and the dark green office cabinetry visible through the doorway">Photo 4</a>
-            </div>
-            <figcaption><span class="gallery-cat">Living Spaces</span> <span class="gallery-meta">Entry &amp; hallway · Crisp white raised-panel wainscoting · Greater Charlotte Area,&nbsp;NC</span></figcaption>
-          </figure>
-          <!-- Photo-set item: Charlotte-area home office & gym. Cover = office; the lightbox set runs Murphy bed → cabinetry → gym (folded) → gym (in use) → Before. -->
-          <figure class="gallery-item photo ratio-portrait" data-category="offices">
-            <a class="gallery-link" href="assets/images/gallery/custom-office-1.webp?v=2" data-width="1320" data-height="990">
-              <picture>
-                <source type="image/webp" srcset="assets/images/gallery/custom-office-1-card-480.webp?v=2 480w, assets/images/gallery/custom-office-1-card-960.webp?v=2 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/custom-office-1-card-480.jpg?v=2" srcset="assets/images/gallery/custom-office-1-card-480.jpg?v=2 480w, assets/images/gallery/custom-office-1-card-960.jpg?v=2 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async"
-                     alt="Home office with a natural maple desk in front of a wall of floor-to-ceiling dark green cabinets and open shelving, with a framed map on the side wall">
-              </picture>
-            </a>
-            <span class="set-count" aria-hidden="true">6 photos</span>
-            <div class="gallery-set" hidden>
-              <a href="assets/images/gallery/custom-office-2.webp?v=2" data-width="1320" data-height="990"
-                 data-alt="The same green cabinetry wall with the hidden Murphy bed folded down from the center cabinet and made up with white bedding">Photo 2</a>
-              <a href="assets/images/gallery/custom-office-3.webp?v=2" data-width="1320" data-height="990"
-                 data-alt="Straight-on view of the dark green cabinetry closed, with the Murphy bed hidden behind the center doors and lit open shelves on each side">Photo 3</a>
-              <a href="assets/images/gallery/custom-office-4.webp" data-width="1320" data-height="1760"
-                 data-alt="Home gym corner across the room: a fold-away wall-mounted squat rack folded flat against a stained wood plank accent wall with a large mirror">Photo 4</a>
-              <a href="assets/images/gallery/custom-office-5.webp" data-width="1320" data-height="1760"
-                 data-alt="The same gym corner with the squat rack folded out, a loaded barbell on the hooks, and a flat bench in front of the mirror">Photo 5</a>
-              <a href="assets/images/gallery/custom-office-before.webp" data-width="1320" data-height="990" data-label="Before"
-                 data-alt="Before: the empty room with two windows, bare white walls and carpet, and a dog in the doorway">Before</a>
-            </div>
-            <figcaption><span class="gallery-cat">Offices &amp; Flex Rooms</span> <span class="gallery-meta">Home office &amp; gym · Deep green cabinetry &amp; a hidden Murphy bed · Greater Charlotte Area,&nbsp;NC</span></figcaption>
-          </figure>
-          <!-- Photo item: Aberdeen home office color drench (single photo; the lightbox steps between projects). -->
-          <figure class="gallery-item photo ratio-portrait" data-category="offices">
-            <a class="gallery-link" href="assets/images/gallery/office-sd-1.webp" data-width="1320" data-height="1760">
-              <picture>
-                <source type="image/webp" srcset="assets/images/gallery/office-sd-1-card-480.webp 480w, assets/images/gallery/office-sd-1-card-960.webp 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/office-sd-1-card-480.jpg" srcset="assets/images/gallery/office-sd-1-card-480.jpg 480w, assets/images/gallery/office-sd-1-card-960.jpg 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async"
-                     alt="Home office color-drenched in deep navy on the walls and ceiling, with a natural maple desk, a black task chair, a brass sputnik chandelier, a framed abstract landscape under a picture light, a vintage-style rug, and a cream studded accent chair">
-              </picture>
-            </a>
-            <figcaption><span class="gallery-cat">Offices &amp; Flex Rooms</span> <span class="gallery-meta">Home office · Navy color drench &amp; brass accents · Aberdeen,&nbsp;SD</span></figcaption>
-          </figure>
-          <!-- Photo-set item: Charlotte-area nursery & playroom. Cover = green accent wall and play loft side; then the wide nursery view and a close-up. -->
-          <figure class="gallery-item photo ratio-portrait" data-category="playrooms">
-            <a class="gallery-link" href="assets/images/gallery/playroom-nc-2.webp" data-width="1320" data-height="990">
-              <picture>
-                <source type="image/webp" srcset="assets/images/gallery/playroom-nc-2-card-480.webp 480w, assets/images/gallery/playroom-nc-2-card-960.webp 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/playroom-nc-2-card-480.jpg" srcset="assets/images/gallery/playroom-nc-2-card-480.jpg 480w, assets/images/gallery/playroom-nc-2-card-960.jpg 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async"
-                     alt="Nursery with a dark green geometric accent wall, a white crib, a gold sputnik chandelier, and the side of a white shiplap cottage play loft with a basketball hoop, a window box, a black Dutch door, and a climbing-wall ladder">
-              </picture>
-            </a>
-            <span class="set-count" aria-hidden="true">3 photos</span>
-            <div class="gallery-set" hidden>
-              <a href="assets/images/gallery/playroom-nc-1.webp" data-width="1320" data-height="990"
-                 data-alt="Nursery with a white shiplap two-story cottage play loft under a cedar-shingle roof with a dormer, a green slide, a climbing-wall ladder, and a gold sputnik chandelier, with a crib in the foreground">Photo 2</a>
-              <a href="assets/images/gallery/playroom-nc-3.webp" data-width="1320" data-height="1760"
-                 data-alt="Close-up of the play loft: cedar-shingle roof and dormer, a shingled porch gable on white posts, and the climbing-wall ladder">Photo 3</a>
-            </div>
-            <figcaption><span class="gallery-cat">Playroom</span> <span class="gallery-meta">Nursery &amp; playroom · Green geometric wall &amp; cottage play loft · Greater Charlotte Area,&nbsp;NC</span></figcaption>
-          </figure>
-          <!-- Photo-set item: Charlotte-area laundry room. Cover = counter and sink; the set runs wide → dog kennel → bowl drawer → Before. -->
-          <figure class="gallery-item photo ratio-portrait" data-category="laundry">
-            <a class="gallery-link" href="assets/images/gallery/laundry-nc-1.webp" data-width="1320" data-height="1760">
-              <picture>
-                <source type="image/webp" srcset="assets/images/gallery/laundry-nc-1-card-480.webp 480w, assets/images/gallery/laundry-nc-1-card-960.webp 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/laundry-nc-1-card-480.jpg" srcset="assets/images/gallery/laundry-nc-1-card-480.jpg 480w, assets/images/gallery/laundry-nc-1-card-960.jpg 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async"
-                     alt="Laundry room with dark green shaker cabinets, a butcher-block counter over a front-load washer and dryer, a black undermount sink with a matte black faucet, white subway tile, and a black hanging rod with wooden hangers">
-              </picture>
-            </a>
-            <span class="set-count" aria-hidden="true">5 photos</span>
-            <div class="gallery-set" hidden>
-              <a href="assets/images/gallery/laundry-nc-2.webp" data-width="1320" data-height="1760"
-                 data-alt="Wide evening view of the whole laundry room: tall green upper cabinets, the butcher-block counter running over the washer and dryer to the sink, subway tile to the ceiling, and the hanging rod">Photo 2</a>
-              <a href="assets/images/gallery/laundry-nc-3.webp" data-width="1320" data-height="1760"
-                 data-alt="The same counter with the dog kennel under the sink open, two bulldogs resting inside beside its mesh-panel door">Photo 3</a>
-              <a href="assets/images/gallery/laundry-nc-4.webp" data-width="1320" data-height="1760"
-                 data-alt="Low-angle view of the green base cabinets: a pull-out drawer at floor level holding two stainless dog bowls, below the kennel's black mesh door">Photo 4</a>
-              <a href="assets/images/gallery/laundry-nc-before.webp" data-width="1320" data-height="1760" data-label="Before"
-                 data-alt="Before: the plain white laundry room with the washer and dryer against the wall, a wire shelf above, and a wire dog crate and bowls on the floor">Before</a>
-            </div>
-            <figcaption><span class="gallery-cat">Laundry Room</span> <span class="gallery-meta">Laundry room · Deep green cabinetry &amp; butcher block · Greater Charlotte Area,&nbsp;NC</span></figcaption>
-          </figure>
-          <!-- Photo-set item: Aberdeen laundry room refresh. Cover = sink and counter; the set runs decor corner → Before (wide) → Before (counter). -->
-          <figure class="gallery-item photo ratio-portrait" data-category="laundry">
-            <a class="gallery-link" href="assets/images/gallery/laundry-sd-1.webp" data-width="1320" data-height="1760">
-              <picture>
-                <source type="image/webp" srcset="assets/images/gallery/laundry-sd-1-card-480.webp 480w, assets/images/gallery/laundry-sd-1-card-960.webp 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)">
-                <img src="assets/images/gallery/laundry-sd-1-card-480.jpg" srcset="assets/images/gallery/laundry-sd-1-card-480.jpg 480w, assets/images/gallery/laundry-sd-1-card-960.jpg 960w" sizes="(min-width: 1100px) 384px, (min-width: 720px) calc(50vw - 2rem), calc(100vw - 2.5rem)" width="480" height="600" loading="lazy" decoding="async"
-                     alt="Refreshed laundry room with blue-gray painted cabinets, a butcher-block counter, a white farmhouse sink with a bridge faucet, cream subway tile, and patterned gray-and-white floor tile">
-              </picture>
-            </a>
-            <span class="set-count" aria-hidden="true">4 photos</span>
-            <div class="gallery-set" hidden>
-              <a href="assets/images/gallery/laundry-sd-2.webp" data-width="1320" data-height="1760"
-                 data-alt="Decor corner of the refreshed laundry room: white beadboard wainscoting with a striped towel on a hook, a wooden stool with a vase of flowers, and two framed botanical prints">Photo 2</a>
-              <a href="assets/images/gallery/laundry-sd-before-1.webp" data-width="1320" data-height="1760" data-label="Before"
-                 data-alt="Before: wide view of the laundry room with a front-load washer and dryer on pedestals, brown wood cabinets above, and gray plank tile floor">Before</a>
-              <a href="assets/images/gallery/laundry-sd-before-2.webp" data-width="1320" data-height="1760" data-label="Before"
-                 data-alt="Before: brown wood upper and lower cabinets around a dark laminate counter with a small stainless sink">Before</a>
-            </div>
-            <figcaption><span class="gallery-cat">Laundry Room</span> <span class="gallery-meta">Laundry room · Blue-gray refresh &amp; patterned tile · Aberdeen,&nbsp;SD</span></figcaption>
-          </figure>
+          {%- endfor %}
         </div>
       </div>
     </section>
 
-    <section class="section cta-band" aria-labelledby="cta-title">
-      <div class="container">
-        <p class="eyebrow">Work with me</p>
-        <h2 id="cta-title">Let's create something together.</h2>
-        <p>Brand collaborations, sponsored content, design consultations, press, or just saying hi.</p>
-        <a class="btn btn-light" href="index.html#work">Work With Me</a>
-      </div>
-    </section>
-  </main>
-
-  <!-- Lightbox (native <dialog>). Filled with textContent / validated same-origin URLs only. -->
-  <dialog class="lightbox" id="lightbox" aria-labelledby="lightbox-caption">
-    <div class="lightbox-inner">
-      <img id="lightbox-img" src="assets/images/placeholders/landscape.svg" width="1600" height="1200" alt="">
-      <p class="lightbox-caption" id="lightbox-caption">Project photo</p>
-      <div class="lightbox-controls">
-        <button class="lightbox-btn" type="button" data-lightbox="prev">← Previous</button>
-        <span class="lightbox-count" id="lightbox-count"></span>
-        <button class="lightbox-btn" type="button" data-lightbox="next">Next →</button>
-        <button class="lightbox-btn" type="button" data-lightbox="close">Close</button>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- ===================== Footer (shared across pages) ===================== -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="footer-logo-link">
-          <picture><source type="image/webp" srcset="assets/logo/horizontal-light-360.webp 360w, assets/logo/horizontal-light-720.webp 720w" sizes="(min-width: 400px) 340px, calc(100vw - 2.5rem)"><img class="footer-logo" src="assets/logo/horizontal-light-360.png" srcset="assets/logo/horizontal-light-360.png 360w, assets/logo/horizontal-light-720.png 720w" sizes="(min-width: 400px) 340px, calc(100vw - 2.5rem)" width="360" height="91" alt="Fox &amp; Fable"></picture>
-        </a>
-        <p class="footer-tagline">Home &amp; Lifestyle</p>
-        <p>Home, design &amp; everyday living with Jessica, from the Greater Salt&nbsp;Lake Area,&nbsp;Utah.</p>
-      </div>
-      <nav class="footer-nav" aria-label="Footer">
-        <p class="footer-heading">Explore</p>
-        <ul class="list-reset">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="gallery.html">Room Tours</a></li>
-          <li><a href="index.html#shop">Shop</a></li>
-          <li><a href="index.html#journal">Journal</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="index.html#work">Work With Me</a></li>
-        </ul>
-      </nav>
-      <div>
-        <p class="footer-heading">Say hello</p>
-        <address class="footer-contact">
-          Greater Salt&nbsp;Lake Area,&nbsp;Utah<br>
-          <a href="mailto:hello@foxandfable.com">hello@foxandfable.com</a> <span class="placeholder-inline">(placeholder)</span>
-        </address>
-        <ul class="social list-reset">
-          <li><a href="https://www.instagram.com/foxandfable.design/" target="_blank" rel="noopener noreferrer" aria-label="Fox &amp; Fable on Instagram (opens in a new tab)">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
-          </a></li>
-          <li><a href="#" rel="noopener noreferrer" aria-label="Fox &amp; Fable on Pinterest (placeholder link)">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 8.5c3-1 5 .8 4.5 3.2-.4 2-2.4 3-3.8 2.2M12 10.5 9.8 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </a></li>
-          <li><a href="#" rel="noopener noreferrer" aria-label="Fox &amp; Fable on TikTok (placeholder link)">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5M14 4c.4 2.6 2.2 4.3 5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="container footer-base">
-      <p>© <span id="year">2026</span> Fox &amp; Fable, LLC · Greater Salt&nbsp;Lake Area,&nbsp;UT</p>
-      <p>Design mockup. Images and contact details are placeholders.</p>
-    </div>
-  </footer>
-</body>
-</html>
+{% include cta-band.html %}

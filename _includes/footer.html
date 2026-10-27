@@ -1,0 +1,45 @@
+{%- assign r = page.root -%}
+{%- assign s = site.data.settings -%}
+{%- if page.nav == "home" -%}{%- assign home = "#top" -%}{%- assign hp = "" -%}{%- else -%}{%- assign home = r | append: "index.html" -%}{%- assign hp = r | append: "index.html" -%}{%- endif -%}
+  <!-- ===================== Footer (shared across pages) ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="{{ home }}" class="footer-logo-link">
+          <picture><source type="image/webp" srcset="{{ r }}assets/logo/horizontal-light-360.webp 360w, {{ r }}assets/logo/horizontal-light-720.webp 720w" sizes="(min-width: 400px) 340px, calc(100vw - 2.5rem)"><img class="footer-logo" src="{{ r }}assets/logo/horizontal-light-360.png" srcset="{{ r }}assets/logo/horizontal-light-360.png 360w, {{ r }}assets/logo/horizontal-light-720.png 720w" sizes="(min-width: 400px) 340px, calc(100vw - 2.5rem)" width="360" height="91" alt="Fox &amp; Fable"></picture>
+        </a>
+        <p class="footer-tagline">{{ s.footer_tagline | escape }}</p>
+        <p>{{ s.footer_blurb | escape | replace: "Salt Lake", "Salt&nbsp;Lake" | replace: "Area, ", "Area,&nbsp;" }}</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <p class="footer-heading">Explore</p>
+        <ul class="list-reset">
+          <li><a href="{{ home }}">Home</a></li>
+          <li><a href="{{ r }}gallery.html">Room Tours</a></li>
+          <li><a href="{{ hp }}#shop">Shop</a></li>
+          <li><a href="{{ hp }}#journal">Journal</a></li>
+          <li><a href="{{ r }}about.html">About</a></li>
+          <li><a href="{{ hp }}#work">Work With Me</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="footer-heading">Say hello</p>
+        <address class="footer-contact">
+          {{ s.footer_location | escape | replace: "Salt Lake", "Salt&nbsp;Lake" | replace: "Area, ", "Area,&nbsp;" }}<br>
+          <a href="mailto:{{ s.contact_email | escape }}">{{ s.contact_email | escape }}</a>{% if s.contact_email_is_placeholder %} <span class="placeholder-inline">(placeholder)</span>{% endif %}
+        </address>
+        <ul class="social list-reset">
+{%- for l in site.data.social.links %}
+{%- include safe-link.html url=l.link %}
+          <li><a href="{{ safe_href }}"{% if is_external %} target="_blank"{% endif %} rel="noopener noreferrer" aria-label="Fox &amp; Fable on {{ l.name | escape }} ({% if is_external %}opens in a new tab{% else %}placeholder link{% endif %})">
+            {% include social-icon.html name=l.name %}
+          </a></li>
+{%- endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-base">
+      <p>© <span id="year">{{ site.time | date: "%Y" }}</span> {{ s.footer_copyright | escape | replace: "Salt Lake", "Salt&nbsp;Lake" | replace: "Area, ", "Area,&nbsp;" }}</p>
+      <p>{{ s.footer_note | escape }}</p>
+    </div>
+  </footer>
